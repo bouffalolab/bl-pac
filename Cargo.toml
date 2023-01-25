@@ -1,0 +1,6 @@
+[workspace]
+members = [
+    "bl616",
+    "xtask"
+]
+default-members = ["xtask"]
