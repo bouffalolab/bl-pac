@@ -365,6 +365,62 @@ impl core::fmt::Debug for IR {
 }
 #[doc = "Infrared receiver module"]
 pub mod ir;
+#[doc = "Checksum peripheral"]
+pub struct CRC {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for CRC {}
+impl CRC {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const crc::RegisterBlock = 0x2000_a700 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const crc::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for CRC {
+    type Target = crc::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for CRC {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("CRC").finish()
+    }
+}
+#[doc = "Checksum peripheral"]
+pub mod crc;
+#[doc = "MIPI Display Bus Interface"]
+pub struct DBI {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for DBI {}
+impl DBI {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const dbi::RegisterBlock = 0x2000_a800 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const dbi::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for DBI {
+    type Target = dbi::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for DBI {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("DBI").finish()
+    }
+}
+#[doc = "MIPI Display Bus Interface"]
+pub mod dbi;
 #[doc = "ISO 11898 communication protocol"]
 pub struct ISO11898 {
     _marker: PhantomData<*const ()>,
@@ -617,6 +673,34 @@ impl core::fmt::Debug for EFUSE {
 }
 #[doc = "eFuse memory control"]
 pub mod efuse;
+#[doc = "Digital Video Port control"]
+pub struct DVP0 {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for DVP0 {}
+impl DVP0 {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const dvp::RegisterBlock = 0x2005_7000 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const dvp::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for DVP0 {
+    type Target = dvp::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for DVP0 {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("DVP0").finish()
+    }
+}
+#[doc = "Digital Video Port control"]
+pub mod dvp;
 #[doc = "Motion JPEG encoder"]
 pub struct MJPEG {
     _marker: PhantomData<*const ()>,
@@ -758,6 +842,10 @@ pub struct Peripherals {
     pub TIMER: TIMER,
     #[doc = "IR"]
     pub IR: IR,
+    #[doc = "CRC"]
+    pub CRC: CRC,
+    #[doc = "DBI"]
+    pub DBI: DBI,
     #[doc = "ISO11898"]
     pub ISO11898: ISO11898,
     #[doc = "I2S"]
@@ -776,6 +864,8 @@ pub struct Peripherals {
     pub APWM: APWM,
     #[doc = "EFUSE"]
     pub EFUSE: EFUSE,
+    #[doc = "DVP0"]
+    pub DVP0: DVP0,
     #[doc = "MJPEG"]
     pub MJPEG: MJPEG,
     #[doc = "SDH"]
@@ -842,6 +932,12 @@ impl Peripherals {
             IR: IR {
                 _marker: PhantomData,
             },
+            CRC: CRC {
+                _marker: PhantomData,
+            },
+            DBI: DBI {
+                _marker: PhantomData,
+            },
             ISO11898: ISO11898 {
                 _marker: PhantomData,
             },
@@ -867,6 +963,9 @@ impl Peripherals {
                 _marker: PhantomData,
             },
             EFUSE: EFUSE {
+                _marker: PhantomData,
+            },
+            DVP0: DVP0 {
                 _marker: PhantomData,
             },
             MJPEG: MJPEG {

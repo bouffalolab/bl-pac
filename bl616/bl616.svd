@@ -3222,8 +3222,46 @@ DMA request will not be asserted if `transmit_available` is less than this value
         </register>
       </registers>
     </peripheral>
-    <!-- todo: CKS = 0x2000A700? -->
-    <!-- todo: DBI = 0x2000A800? -->
+    <peripheral>
+      <name>CRC</name>
+      <description>Checksum peripheral</description>
+      <baseAddress>0x2000A700</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x100</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>todo</name>
+          <description>??</description>
+          <addressOffset>0</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>DBI</name>
+      <description>MIPI Display Bus Interface</description>
+      <baseAddress>0x2000A800</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x100</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>todo</name>
+          <description>??</description>
+          <addressOffset>0</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
     <peripheral>
       <name>ISO11898</name>
       <description>ISO 11898 communication protocol</description>
@@ -3861,8 +3899,28 @@ DMA request will not be asserted if `transmit_available` is less than this value
         </register>
       </registers>
     </peripheral>
-    <!-- todo: dvp0 = 0x20057000 -->
-    <!-- todo: dvp1 = 0x20058000 -->
+    <peripheral>
+      <dim>1</dim>
+      <dimIncrement>0x1000</dimIncrement>
+      <name>DVP[%s]</name>
+      <description>Digital Video Port control</description>
+      <baseAddress>0x20057000</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x1000</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>todo</name>
+          <description>??</description>
+          <addressOffset>0</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
     <peripheral>
       <name>MJPEG</name>
       <description>Motion JPEG encoder</description>
