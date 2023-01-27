@@ -36,9 +36,299 @@ See the Mulan PSL v2 for more details.
       </addressBlock>
       <registers>
         <register>
-          <name>todo</name>
-          <description>??</description>
-          <addressOffset>0</addressOffset>
+          <dim>35</dim>
+          <dimIncrement>0x04</dimIncrement>
+          <name>gpio_config[%s]</name>
+          <description>Generic Purpose Input/Output config</description>
+          <addressOffset>0x8C4</addressOffset>
+          <fields>
+            <field>
+              <name>pin_mode</name>
+              <description>Pin input/output mode switch</description>
+              <lsb>30</lsb>
+              <msb>31</msb>
+              <enumeratedValues>
+                <name>PinMode</name>
+                <enumeratedValue>
+                  <name>output_value</name>
+                  <description>Output by `output_value` field</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>set_clear</name>
+                  <description>Output set by `output_set` and `output_clear` fields</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>dma_output_value</name>
+                  <description>Source from GPIO DMA, output by `output_value`</description>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>dma_set_clear</name>
+                  <description>Source from GPIO DMA, set by `output_set` and `output_clear`</description>
+                  <value>3</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>input_value</name>
+              <description>Input value</description>
+              <access>read-only</access>
+              <lsb>28</lsb>
+              <msb>28</msb>
+            </field>
+            <field>
+              <name>output_clear</name>
+              <description>Clear output value to 0\n\n
+When sets and clears at the same, only set will take effect.</description>
+              <access>write-only</access>
+              <lsb>26</lsb>
+              <msb>26</msb>
+            </field>
+            <field>
+              <name>output_set</name>
+              <description>Set output value to 1\n\n
+When sets and clears at the same, only set will take effect.</description>
+              <access>write-only</access>
+              <lsb>25</lsb>
+              <msb>25</msb>
+            </field>
+            <field>
+              <name>output_value</name>
+              <description>Output value</description>
+              <lsb>24</lsb>
+              <msb>24</msb>
+            </field>
+            <field>
+              <name>interrupt_mask</name>
+              <description>Pin interrupt mask</description>
+              <lsb>22</lsb>
+              <msb>22</msb>
+            </field>
+            <field>
+              <name>interrupt_state</name>
+              <description>Pin interrupt state</description>
+              <access>read-only</access>
+              <lsb>21</lsb>
+              <msb>21</msb>
+            </field>
+            <field>
+              <name>interrupt_clear</name>
+              <description>Clear pin interrupt flag</description>
+              <lsb>20</lsb>
+              <msb>20</msb>
+            </field>
+            <field>
+              <name>interrupt_mode</name>
+              <description>Select pin interrupt mode</description>
+              <lsb>16</lsb>
+              <msb>19</msb>
+              <!-- todo enumeratedValues -->
+            </field>
+            <field>
+              <name>alternate</name>
+              <description>Pin alternate function switch</description>
+              <lsb>8</lsb>
+              <msb>12</msb>
+              <enumeratedValues>
+                <name>Alternate</name>
+                <enumeratedValue>
+                  <name>sdh</name>
+                  <description>Secure Digital host</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>spi0</name>
+                  <description>Serial Peripheral Interface 0</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>flash</name>
+                  <description>Flash control</description>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>i2s0</name>
+                  <description>Inter-IC Sound 0</description>
+                  <value>3</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>pdm</name>
+                  <description>Pulse Density Modulation</description>
+                  <value>4</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>i2c0</name>
+                  <description>Inter-Integrated Circuit bus 0</description>
+                  <value>5</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>i2c1</name>
+                  <description>Inter-Integrated Circuit bus 1</description>
+                  <value>6</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>uart0</name>
+                  <description>Universal Asynchronous Receiver/Transmitter 0</description>
+                  <value>7</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>emac</name>
+                  <description>Ethernet Media Access Control</description>
+                  <value>8</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>cam</name>
+                  <description>??</description><!-- todo -->
+                  <value>9</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>analog</name>
+                  <description>??</description><!-- todo -->
+                  <value>10</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>gpio</name>
+                  <description>Generic Purpose Input/Output</description>
+                  <value>11</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sdio</name>
+                  <description>??</description><!-- todo -->
+                  <value>12</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>pwm0</name>
+                  <description>Pulse-Width Modulation module 0</description>
+                  <value>16</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>jtag</name>
+                  <description>??</description><!-- todo -->
+                  <value>17</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>uart1</name>
+                  <description>Universal Asynchronous Receiver/Transmitter 1</description>
+                  <value>18</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>pwm1</name>
+                  <description>Pulse-Width Modulation 1</description>
+                  <value>19</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>spi1</name>
+                  <description>Serial Peripheral Interface 1</description>
+                  <value>20</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>i2s1</name>
+                  <description>Inter-IC Sound 1</description>
+                  <value>21</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>dbi_b</name>
+                  <description>??</description><!-- todo -->
+                  <value>22</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>dbi_c</name>
+                  <description>??</description><!-- todo -->
+                  <value>23</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>qspi</name>
+                  <description>??</description><!-- todo -->
+                  <value>24</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>apwm</name>
+                  <description>Audio Pulse-Width Modulation</description>
+                  <value>25</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>clock_out</name>
+                  <description>Clock output</description>
+                  <value>31</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>output_function</name>
+              <description>Enable output signal</description>
+              <lsb>6</lsb>
+              <msb>6</msb>
+            </field>
+            <field>
+              <name>pull_down</name>
+              <description>Enable internal pull-down</description>
+              <lsb>5</lsb>
+              <msb>5</msb>
+            </field>
+            <field>
+              <name>pull_up</name>
+              <description>Enable internal pull-up</description>
+              <lsb>4</lsb>
+              <msb>4</msb>
+            </field>
+            <field>
+              <name>drive</name>
+              <description>Drive strength</description>
+              <lsb>2</lsb>
+              <msb>3</msb>
+            </field>
+            <field>
+              <name>schmitt</name>
+              <description>Enable schmitt trigger</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+            </field>
+            <field>
+              <name>input_function</name>
+              <description>Enable input signal</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <dim>2</dim>
+          <dimIncrement>0x04</dimIncrement>
+          <name>gpio_input[%s]</name>
+          <description>Read value from Generic Purpose Input/Output pins</description>
+          <addressOffset>0xAC4</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <dim>2</dim>
+          <dimIncrement>0x04</dimIncrement>
+          <name>gpio_output[%s]</name>
+          <description>Write value to Generic Purpose Input/Output pins</description>
+          <addressOffset>0xAE4</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <dim>2</dim>
+          <dimIncrement>0x04</dimIncrement>
+          <name>gpio_set[%s]</name>
+          <description>Set pin output value to high</description>
+          <addressOffset>0xAEC</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <dim>2</dim>
+          <dimIncrement>0x04</dimIncrement>
+          <name>gpio_clear[%s]</name>
+          <description>Set pin output value to low</description>
+          <addressOffset>0xAF4</addressOffset>
           <fields>
             <!-- todo: fields -->
           </fields>
