@@ -365,6 +365,34 @@ impl core::fmt::Debug for I2S {
 }
 #[doc = "Inter-IC Sound controller"]
 pub mod i2s;
+#[doc = "Audio Analog-to-Digital Converter"]
+pub struct AADC {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for AADC {}
+impl AADC {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const aadc::RegisterBlock = 0x2000_ac00 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const aadc::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for AADC {
+    type Target = aadc::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for AADC {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("AADC").finish()
+    }
+}
+#[doc = "Audio Analog-to-Digital Converter"]
+pub mod aadc;
 #[doc = "Quad Serial Flash control"]
 pub struct FLASH {
     _marker: PhantomData<*const ()>,
@@ -450,33 +478,33 @@ impl core::fmt::Debug for HBN {
 #[doc = "Hibernate (Deep sleep) control"]
 pub mod hbn;
 #[doc = "Audio Pulse-Width Modulation controller"]
-pub struct AUDIO_PWM {
+pub struct APWM {
     _marker: PhantomData<*const ()>,
 }
-unsafe impl Send for AUDIO_PWM {}
-impl AUDIO_PWM {
+unsafe impl Send for APWM {}
+impl APWM {
     #[doc = r"Pointer to the register block"]
-    pub const PTR: *const audio_pwm::RegisterBlock = 0x2005_5000 as *const _;
+    pub const PTR: *const apwm::RegisterBlock = 0x2005_5000 as *const _;
     #[doc = r"Return the pointer to the register block"]
     #[inline(always)]
-    pub const fn ptr() -> *const audio_pwm::RegisterBlock {
+    pub const fn ptr() -> *const apwm::RegisterBlock {
         Self::PTR
     }
 }
-impl Deref for AUDIO_PWM {
-    type Target = audio_pwm::RegisterBlock;
+impl Deref for APWM {
+    type Target = apwm::RegisterBlock;
     #[inline(always)]
     fn deref(&self) -> &Self::Target {
         unsafe { &*Self::PTR }
     }
 }
-impl core::fmt::Debug for AUDIO_PWM {
+impl core::fmt::Debug for APWM {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("AUDIO_PWM").finish()
+        f.debug_struct("APWM").finish()
     }
 }
 #[doc = "Audio Pulse-Width Modulation controller"]
-pub mod audio_pwm;
+pub mod apwm;
 #[doc = "eFuse memory control"]
 pub struct EFUSE {
     _marker: PhantomData<*const ()>,
@@ -646,14 +674,16 @@ pub struct Peripherals {
     pub IR: IR,
     #[doc = "I2S"]
     pub I2S: I2S,
+    #[doc = "AADC"]
+    pub AADC: AADC,
     #[doc = "FLASH"]
     pub FLASH: FLASH,
     #[doc = "PDS"]
     pub PDS: PDS,
     #[doc = "HBN"]
     pub HBN: HBN,
-    #[doc = "AUDIO_PWM"]
-    pub AUDIO_PWM: AUDIO_PWM,
+    #[doc = "APWM"]
+    pub APWM: APWM,
     #[doc = "EFUSE"]
     pub EFUSE: EFUSE,
     #[doc = "MJPEG"]
@@ -722,6 +752,9 @@ impl Peripherals {
             I2S: I2S {
                 _marker: PhantomData,
             },
+            AADC: AADC {
+                _marker: PhantomData,
+            },
             FLASH: FLASH {
                 _marker: PhantomData,
             },
@@ -731,7 +764,7 @@ impl Peripherals {
             HBN: HBN {
                 _marker: PhantomData,
             },
-            AUDIO_PWM: AUDIO_PWM {
+            APWM: APWM {
                 _marker: PhantomData,
             },
             EFUSE: EFUSE {

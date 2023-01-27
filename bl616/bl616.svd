@@ -3144,6 +3144,26 @@ DMA request will not be asserted if `transmit_available` is less than this value
       </registers>
     </peripheral>
     <peripheral>
+      <name>AADC</name>
+      <description>Audio Analog-to-Digital Converter</description>
+      <baseAddress>0x2000AC00</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x100</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>todo</name>
+          <description>??</description>
+          <addressOffset>0</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
       <name>FLASH</name>
       <description>Quad Serial Flash control</description>
       <baseAddress>0x2000B000</baseAddress>
@@ -3395,7 +3415,7 @@ DMA request will not be asserted if `transmit_available` is less than this value
       </registers>
     </peripheral>
     <peripheral>
-      <name>AUDIO_PWM</name>
+      <name>APWM</name>
       <description>Audio Pulse-Width Modulation controller</description>
       <baseAddress>0x20055000</baseAddress>
       <addressBlock>
