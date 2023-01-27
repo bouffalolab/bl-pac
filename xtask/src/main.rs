@@ -72,6 +72,7 @@ fn process_chip(chip: &Chip, workspace: &Path) {
     let svd_config = svd2rust::Config {
         target: svd2rust::Target::RISCV,
         output_dir: chip_path.clone(),
+        atomics: true,
         ..Default::default()
     };
 
