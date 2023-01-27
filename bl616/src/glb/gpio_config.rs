@@ -398,10 +398,149 @@ impl<'a, const O: u8> ALTERNATE_W<'a, O> {
     }
 }
 #[doc = "Field `interrupt_mode` reader - Select pin interrupt mode"]
-pub type INTERRUPT_MODE_R = crate::FieldReader<u8, u8>;
+pub type INTERRUPT_MODE_R = crate::FieldReader<u8, INTERRUPT_MODE_A>;
+#[doc = "Select pin interrupt mode\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[repr(u8)]
+pub enum INTERRUPT_MODE_A {
+    #[doc = "0: Synchronous interrupt in falling edge"]
+    SYNC_FALLING_EDGE = 0,
+    #[doc = "1: Synchronous interrupt in rising edge"]
+    SYNC_RISING_EDGE = 1,
+    #[doc = "2: Synchronous interrupt in low level"]
+    SYNC_LOW_LEVEL = 2,
+    #[doc = "3: Synchronous interrupt in high level"]
+    SYNC_HIGH_LEVEL = 3,
+    #[doc = "4: Synchronous interrupt in both rising and falling edges"]
+    SYNC_BOTH_EDGES = 4,
+    #[doc = "8: Asynchronous interrupt in falling edge"]
+    ASYNC_FALLING_EDGE = 8,
+    #[doc = "9: Asynchronous interrupt in rising edge"]
+    ASYNC_RISING_EDGE = 9,
+    #[doc = "10: Asynchronous interrupt in low level"]
+    ASYNC_LOW_LEVEL = 10,
+    #[doc = "11: Asynchronous interrupt in high level"]
+    ASYNC_HIGH_LEVEL = 11,
+}
+impl From<INTERRUPT_MODE_A> for u8 {
+    #[inline(always)]
+    fn from(variant: INTERRUPT_MODE_A) -> Self {
+        variant as _
+    }
+}
+impl INTERRUPT_MODE_R {
+    #[doc = "Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> Option<INTERRUPT_MODE_A> {
+        match self.bits {
+            0 => Some(INTERRUPT_MODE_A::SYNC_FALLING_EDGE),
+            1 => Some(INTERRUPT_MODE_A::SYNC_RISING_EDGE),
+            2 => Some(INTERRUPT_MODE_A::SYNC_LOW_LEVEL),
+            3 => Some(INTERRUPT_MODE_A::SYNC_HIGH_LEVEL),
+            4 => Some(INTERRUPT_MODE_A::SYNC_BOTH_EDGES),
+            8 => Some(INTERRUPT_MODE_A::ASYNC_FALLING_EDGE),
+            9 => Some(INTERRUPT_MODE_A::ASYNC_RISING_EDGE),
+            10 => Some(INTERRUPT_MODE_A::ASYNC_LOW_LEVEL),
+            11 => Some(INTERRUPT_MODE_A::ASYNC_HIGH_LEVEL),
+            _ => None,
+        }
+    }
+    #[doc = "Checks if the value of the field is `SYNC_FALLING_EDGE`"]
+    #[inline(always)]
+    pub fn is_sync_falling_edge(&self) -> bool {
+        *self == INTERRUPT_MODE_A::SYNC_FALLING_EDGE
+    }
+    #[doc = "Checks if the value of the field is `SYNC_RISING_EDGE`"]
+    #[inline(always)]
+    pub fn is_sync_rising_edge(&self) -> bool {
+        *self == INTERRUPT_MODE_A::SYNC_RISING_EDGE
+    }
+    #[doc = "Checks if the value of the field is `SYNC_LOW_LEVEL`"]
+    #[inline(always)]
+    pub fn is_sync_low_level(&self) -> bool {
+        *self == INTERRUPT_MODE_A::SYNC_LOW_LEVEL
+    }
+    #[doc = "Checks if the value of the field is `SYNC_HIGH_LEVEL`"]
+    #[inline(always)]
+    pub fn is_sync_high_level(&self) -> bool {
+        *self == INTERRUPT_MODE_A::SYNC_HIGH_LEVEL
+    }
+    #[doc = "Checks if the value of the field is `SYNC_BOTH_EDGES`"]
+    #[inline(always)]
+    pub fn is_sync_both_edges(&self) -> bool {
+        *self == INTERRUPT_MODE_A::SYNC_BOTH_EDGES
+    }
+    #[doc = "Checks if the value of the field is `ASYNC_FALLING_EDGE`"]
+    #[inline(always)]
+    pub fn is_async_falling_edge(&self) -> bool {
+        *self == INTERRUPT_MODE_A::ASYNC_FALLING_EDGE
+    }
+    #[doc = "Checks if the value of the field is `ASYNC_RISING_EDGE`"]
+    #[inline(always)]
+    pub fn is_async_rising_edge(&self) -> bool {
+        *self == INTERRUPT_MODE_A::ASYNC_RISING_EDGE
+    }
+    #[doc = "Checks if the value of the field is `ASYNC_LOW_LEVEL`"]
+    #[inline(always)]
+    pub fn is_async_low_level(&self) -> bool {
+        *self == INTERRUPT_MODE_A::ASYNC_LOW_LEVEL
+    }
+    #[doc = "Checks if the value of the field is `ASYNC_HIGH_LEVEL`"]
+    #[inline(always)]
+    pub fn is_async_high_level(&self) -> bool {
+        *self == INTERRUPT_MODE_A::ASYNC_HIGH_LEVEL
+    }
+}
 #[doc = "Field `interrupt_mode` writer - Select pin interrupt mode"]
 pub type INTERRUPT_MODE_W<'a, const O: u8> =
-    crate::FieldWriter<'a, u32, GPIO_CONFIG_SPEC, u8, u8, 4, O>;
+    crate::FieldWriter<'a, u32, GPIO_CONFIG_SPEC, u8, INTERRUPT_MODE_A, 4, O>;
+impl<'a, const O: u8> INTERRUPT_MODE_W<'a, O> {
+    #[doc = "Synchronous interrupt in falling edge"]
+    #[inline(always)]
+    pub fn sync_falling_edge(self) -> &'a mut W {
+        self.variant(INTERRUPT_MODE_A::SYNC_FALLING_EDGE)
+    }
+    #[doc = "Synchronous interrupt in rising edge"]
+    #[inline(always)]
+    pub fn sync_rising_edge(self) -> &'a mut W {
+        self.variant(INTERRUPT_MODE_A::SYNC_RISING_EDGE)
+    }
+    #[doc = "Synchronous interrupt in low level"]
+    #[inline(always)]
+    pub fn sync_low_level(self) -> &'a mut W {
+        self.variant(INTERRUPT_MODE_A::SYNC_LOW_LEVEL)
+    }
+    #[doc = "Synchronous interrupt in high level"]
+    #[inline(always)]
+    pub fn sync_high_level(self) -> &'a mut W {
+        self.variant(INTERRUPT_MODE_A::SYNC_HIGH_LEVEL)
+    }
+    #[doc = "Synchronous interrupt in both rising and falling edges"]
+    #[inline(always)]
+    pub fn sync_both_edges(self) -> &'a mut W {
+        self.variant(INTERRUPT_MODE_A::SYNC_BOTH_EDGES)
+    }
+    #[doc = "Asynchronous interrupt in falling edge"]
+    #[inline(always)]
+    pub fn async_falling_edge(self) -> &'a mut W {
+        self.variant(INTERRUPT_MODE_A::ASYNC_FALLING_EDGE)
+    }
+    #[doc = "Asynchronous interrupt in rising edge"]
+    #[inline(always)]
+    pub fn async_rising_edge(self) -> &'a mut W {
+        self.variant(INTERRUPT_MODE_A::ASYNC_RISING_EDGE)
+    }
+    #[doc = "Asynchronous interrupt in low level"]
+    #[inline(always)]
+    pub fn async_low_level(self) -> &'a mut W {
+        self.variant(INTERRUPT_MODE_A::ASYNC_LOW_LEVEL)
+    }
+    #[doc = "Asynchronous interrupt in high level"]
+    #[inline(always)]
+    pub fn async_high_level(self) -> &'a mut W {
+        self.variant(INTERRUPT_MODE_A::ASYNC_HIGH_LEVEL)
+    }
+}
 #[doc = "Field `interrupt_clear` reader - Clear pin interrupt flag"]
 pub type INTERRUPT_CLEAR_R = crate::BitReader<bool>;
 #[doc = "Field `interrupt_clear` writer - Clear pin interrupt flag"]

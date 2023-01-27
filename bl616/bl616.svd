@@ -124,7 +124,54 @@ When sets and clears at the same, only set will take effect.</description>
               <description>Select pin interrupt mode</description>
               <lsb>16</lsb>
               <msb>19</msb>
-              <!-- todo enumeratedValues -->
+              <enumeratedValues>
+                <name>InterruptMode</name>
+                <enumeratedValue>
+                  <name>sync_falling_edge</name>
+                  <description>Synchronous interrupt in falling edge</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sync_rising_edge</name>
+                  <description>Synchronous interrupt in rising edge</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sync_low_level</name>
+                  <description>Synchronous interrupt in low level</description>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sync_high_level</name>
+                  <description>Synchronous interrupt in high level</description>
+                  <value>3</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>sync_both_edges</name>
+                  <description>Synchronous interrupt in both rising and falling edges</description>
+                  <value>4</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>async_falling_edge</name>
+                  <description>Asynchronous interrupt in falling edge</description>
+                  <value>8</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>async_rising_edge</name>
+                  <description>Asynchronous interrupt in rising edge</description>
+                  <value>9</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>async_low_level</name>
+                  <description>Asynchronous interrupt in low level</description>
+                  <value>10</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>async_high_level</name>
+                  <description>Asynchronous interrupt in high level</description>
+                  <value>11</value>
+                </enumeratedValue>
+              </enumeratedValues>
             </field>
             <field>
               <name>alternate</name>
