@@ -3233,11 +3233,78 @@ DMA request will not be asserted if `transmit_available` is less than this value
       </addressBlock>
       <registers>
         <register>
-          <name>todo</name>
-          <description>??</description>
-          <addressOffset>0</addressOffset>
+          <name>config</name>
+          <description>Configuration register</description>
+          <addressOffset>0x0</addressOffset>
           <fields>
-            <!-- todo: fields -->
+            <field>
+              <name>clear</name>
+              <description>Write 1 to clear internal checksum states</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <access>write-only</access>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <name>Clear</name>
+                <enumeratedValue>
+                  <name>clear</name>
+                  <description>Write 1 to clear internal states</description>
+                  <value>0x1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>endian</name>
+              <description>Sets endian of input data</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <name>Endian</name>
+                <enumeratedValue>
+                  <name>little</name>
+                  <description>Little endian</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>big</name>
+                  <description>Big endian</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>input</name>
+          <description>Data input register</description>
+          <addressOffset>0x4</addressOffset>
+          <access>write-only</access>
+          <fields>
+            <field>
+              <name>data</name>
+              <description>Write data value into checksum calculator</description>
+              <lsb>0</lsb>
+              <msb>31</msb>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>output</name>
+          <description>Checksum output register</description>
+          <addressOffset>0x8</addressOffset>
+          <access>read-only</access>
+          <fields>
+            <field>
+              <name>checksum</name>
+              <description>Read checksum from peripheral</description>
+              <lsb>0</lsb>
+              <msb>15</msb>
+            </field>
           </fields>
         </register>
       </registers>
@@ -3605,7 +3672,26 @@ DMA request will not be asserted if `transmit_available` is less than this value
         </register>
       </registers>
     </peripheral>
-    <!-- todo: DMA = 0x2000C000 -->
+    <peripheral>
+      <name>DMA</name>
+      <description>Direct Memory Access module</description>
+      <baseAddress>0x2000C000</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x100</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>todo</name>
+          <description>??</description>
+          <addressOffset>0</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
     <!-- todo: SDU = 0x2000D000 -->
     <peripheral>
       <name>PDS</name>
