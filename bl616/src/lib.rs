@@ -533,6 +533,34 @@ impl core::fmt::Debug for FLASH {
 }
 #[doc = "Quad Serial Flash control"]
 pub mod flash;
+#[doc = "Direct Memory Access module"]
+pub struct DMA {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for DMA {}
+impl DMA {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const dma::RegisterBlock = 0x2000_c000 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const dma::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for DMA {
+    type Target = dma::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for DMA {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("DMA").finish()
+    }
+}
+#[doc = "Direct Memory Access module"]
+pub mod dma;
 #[doc = "Power-Down Sleep control"]
 pub struct PDS {
     _marker: PhantomData<*const ()>,
@@ -854,6 +882,8 @@ pub struct Peripherals {
     pub AADC: AADC,
     #[doc = "FLASH"]
     pub FLASH: FLASH,
+    #[doc = "DMA"]
+    pub DMA: DMA,
     #[doc = "PDS"]
     pub PDS: PDS,
     #[doc = "HBN"]
@@ -948,6 +978,9 @@ impl Peripherals {
                 _marker: PhantomData,
             },
             FLASH: FLASH {
+                _marker: PhantomData,
+            },
+            DMA: DMA {
                 _marker: PhantomData,
             },
             PDS: PDS {

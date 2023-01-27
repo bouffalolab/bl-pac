@@ -3678,18 +3678,241 @@ DMA request will not be asserted if `transmit_available` is less than this value
       <baseAddress>0x2000C000</baseAddress>
       <addressBlock>
         <offset>0</offset>
-        <size>0x100</size>
+        <size>0x1000</size>
         <usage>registers</usage>
       </addressBlock>
       <registers>
         <register>
-          <name>todo</name>
+          <name>interrupt_state</name>
           <description>??</description>
-          <addressOffset>0</addressOffset>
+          <addressOffset>0x00</addressOffset>
           <fields>
             <!-- todo: fields -->
           </fields>
         </register>
+        <register>
+          <name>terminate_state</name>
+          <description>??</description>
+          <addressOffset>0x04</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>terminate_clear</name>
+          <description>??</description>
+          <addressOffset>0x08</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>error_state</name>
+          <description>??</description>
+          <addressOffset>0x0C</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>error_clear</name>
+          <description>??</description>
+          <addressOffset>0x10</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>terminate_state_raw</name>
+          <description>??</description>
+          <addressOffset>0x14</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>error_state_raw</name>
+          <description>??</description>
+          <addressOffset>0x18</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>channel_state</name>
+          <description>??</description>
+          <addressOffset>0x1C</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>burst_request</name>
+          <description>??</description>
+          <addressOffset>0x20</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>single_request</name>
+          <description>??</description>
+          <addressOffset>0x24</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>last_burst_request</name>
+          <description>??</description>
+          <addressOffset>0x28</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>last_single_request</name>
+          <description>??</description>
+          <addressOffset>0x2C</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>config</name>
+          <description>??</description>
+          <addressOffset>0x30</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+            <field>
+              <name>function</name>
+              <description>Enable or disable DMA peripheral</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>synchronize</name>
+          <description>??</description>
+          <addressOffset>0x34</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <cluster>
+          <dim>4</dim>
+          <dimIncrement>0x100</dimIncrement>
+          <name>channel[%s]</name>
+          <description>Direct Memory Access channel</description>
+          <addressOffset>0x100</addressOffset>
+          <register>
+            <name>source</name>
+            <description>Source address</description>
+            <addressOffset>0x00</addressOffset>
+            <fields>
+              <!-- todo: fields -->
+            </fields>
+          </register>
+          <register>
+            <name>destination</name>
+            <description>Destination address</description>
+            <addressOffset>0x04</addressOffset>
+            <fields>
+              <!-- todo: fields -->
+            </fields>
+          </register>
+          <register>
+            <name>linked_list</name>
+            <description>Linked list buffer base address</description>
+            <addressOffset>0x08</addressOffset>
+            <fields>
+              <field>
+                <name>base_address</name>
+                <description>Base address of first linked list item, must be aligned to 4 bytes</description>
+                <lsb>0</lsb>
+                <msb>31</msb>
+              </field>
+            </fields>
+          </register>
+          <register>
+            <name>control</name>
+            <description>Control register</description>
+            <addressOffset>0x0C</addressOffset>
+            <fields>
+              <!-- todo: fields -->
+            </fields>
+          </register>
+          <register>
+            <name>config</name>
+            <description>Configuration register</description>
+            <addressOffset>0x10</addressOffset>
+            <fields>
+              <field>
+                <name>linked_list_counter</name>
+                <description>??</description>
+                <lsb>20</lsb>
+                <msb>29</msb>
+              </field>
+              <field>
+                <name>halt</name>
+                <description>??</description>
+                <lsb>17</lsb>
+                <msb>17</msb>
+              </field>
+              <field>
+                <name>active</name>
+                <description>??</description>
+                <access>read-only</access>
+                <lsb>16</lsb>
+                <msb>16</msb>
+              </field>
+              <field>
+                <name>lock</name>
+                <description>??</description>
+                <lsb>16</lsb>
+                <msb>16</msb>
+              </field>
+              <field>
+                <name>terminate_mask</name>
+                <description>Mask terminal count interrupt</description>
+                <lsb>15</lsb>
+                <msb>15</msb>
+              </field>
+              <field>
+                <name>error_mask</name>
+                <description>Mask error interrupt</description>
+                <lsb>14</lsb>
+                <msb>14</msb>
+              </field>
+              <field>
+                <name>flow_control</name>
+                <description>Set data direction for this channel</description>
+                <lsb>11</lsb>
+                <msb>13</msb>
+              </field>
+              <field>
+                <name>destination_peripheral</name>
+                <description>Set destination peripheral for this DMA channel</description>
+                <lsb>6</lsb>
+                <msb>10</msb>
+                <!-- todo: enumeratedValues -->
+              </field>
+              <field>
+                <name>source_peripheral</name>
+                <description>Set source peripheral for this DMA channel</description>
+                <lsb>1</lsb>
+                <msb>5</msb>
+              </field>
+              <field>
+                <name>function</name>
+                <description>Enable or disable DMA channel</description>
+                <lsb>0</lsb>
+                <msb>0</msb>
+              </field>
+            </fields>
+          </register>
+        </cluster>
       </registers>
     </peripheral>
     <!-- todo: SDU = 0x2000D000 -->
