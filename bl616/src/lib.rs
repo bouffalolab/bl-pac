@@ -253,6 +253,90 @@ impl core::fmt::Debug for I2C1 {
 }
 #[doc = "Inter-Integrated Circuit bus"]
 pub mod i2c;
+#[doc = "Pulse-Width Modulation module"]
+pub struct PWM {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for PWM {}
+impl PWM {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const pwm::RegisterBlock = 0x2000_a400 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const pwm::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for PWM {
+    type Target = pwm::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for PWM {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("PWM").finish()
+    }
+}
+#[doc = "Pulse-Width Modulation module"]
+pub mod pwm;
+#[doc = "Timer control"]
+pub struct TIMER {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for TIMER {}
+impl TIMER {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const timer::RegisterBlock = 0x2000_a500 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const timer::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for TIMER {
+    type Target = timer::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for TIMER {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("TIMER").finish()
+    }
+}
+#[doc = "Timer control"]
+pub mod timer;
+#[doc = "Infrared receiver module"]
+pub struct IR {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for IR {}
+impl IR {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const ir::RegisterBlock = 0x2000_a600 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const ir::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for IR {
+    type Target = ir::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for IR {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("IR").finish()
+    }
+}
+#[doc = "Infrared receiver module"]
+pub mod ir;
 #[doc = "Inter-IC Sound controller"]
 pub struct I2S {
     _marker: PhantomData<*const ()>,
@@ -309,6 +393,118 @@ impl core::fmt::Debug for FLASH {
 }
 #[doc = "Quad Serial Flash control"]
 pub mod flash;
+#[doc = "Power-Down Sleep control"]
+pub struct PDS {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for PDS {}
+impl PDS {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const pds::RegisterBlock = 0x2000_e000 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const pds::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for PDS {
+    type Target = pds::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for PDS {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("PDS").finish()
+    }
+}
+#[doc = "Power-Down Sleep control"]
+pub mod pds;
+#[doc = "Hibernate (Deep sleep) control"]
+pub struct HBN {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for HBN {}
+impl HBN {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const hbn::RegisterBlock = 0x2000_f000 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const hbn::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for HBN {
+    type Target = hbn::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for HBN {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("HBN").finish()
+    }
+}
+#[doc = "Hibernate (Deep sleep) control"]
+pub mod hbn;
+#[doc = "Audio Pulse-Width Modulation controller"]
+pub struct AUDIO_PWM {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for AUDIO_PWM {}
+impl AUDIO_PWM {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const audio_pwm::RegisterBlock = 0x2005_5000 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const audio_pwm::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for AUDIO_PWM {
+    type Target = audio_pwm::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for AUDIO_PWM {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("AUDIO_PWM").finish()
+    }
+}
+#[doc = "Audio Pulse-Width Modulation controller"]
+pub mod audio_pwm;
+#[doc = "eFuse memory control"]
+pub struct EFUSE {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for EFUSE {}
+impl EFUSE {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const efuse::RegisterBlock = 0x2005_6000 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const efuse::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for EFUSE {
+    type Target = efuse::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for EFUSE {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("EFUSE").finish()
+    }
+}
+#[doc = "eFuse memory control"]
+pub mod efuse;
 #[doc = "Motion JPEG encoder"]
 pub struct MJPEG {
     _marker: PhantomData<*const ()>,
@@ -442,10 +638,24 @@ pub struct Peripherals {
     pub I2C0: I2C0,
     #[doc = "I2C1"]
     pub I2C1: I2C1,
+    #[doc = "PWM"]
+    pub PWM: PWM,
+    #[doc = "TIMER"]
+    pub TIMER: TIMER,
+    #[doc = "IR"]
+    pub IR: IR,
     #[doc = "I2S"]
     pub I2S: I2S,
     #[doc = "FLASH"]
     pub FLASH: FLASH,
+    #[doc = "PDS"]
+    pub PDS: PDS,
+    #[doc = "HBN"]
+    pub HBN: HBN,
+    #[doc = "AUDIO_PWM"]
+    pub AUDIO_PWM: AUDIO_PWM,
+    #[doc = "EFUSE"]
+    pub EFUSE: EFUSE,
     #[doc = "MJPEG"]
     pub MJPEG: MJPEG,
     #[doc = "SDH"]
@@ -500,10 +710,31 @@ impl Peripherals {
             I2C1: I2C1 {
                 _marker: PhantomData,
             },
+            PWM: PWM {
+                _marker: PhantomData,
+            },
+            TIMER: TIMER {
+                _marker: PhantomData,
+            },
+            IR: IR {
+                _marker: PhantomData,
+            },
             I2S: I2S {
                 _marker: PhantomData,
             },
             FLASH: FLASH {
+                _marker: PhantomData,
+            },
+            PDS: PDS {
+                _marker: PhantomData,
+            },
+            HBN: HBN {
+                _marker: PhantomData,
+            },
+            AUDIO_PWM: AUDIO_PWM {
+                _marker: PhantomData,
+            },
+            EFUSE: EFUSE {
                 _marker: PhantomData,
             },
             MJPEG: MJPEG {

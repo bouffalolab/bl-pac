@@ -2267,7 +2267,599 @@ DMA request will not be asserted if `transmit_available` is less than this value
         </register>
       </registers>
     </peripheral>
-
+    <peripheral>
+      <name>PWM</name>
+      <description>Pulse-Width Modulation module</description>
+      <baseAddress>0x2000A400</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x100</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>interrupt_config</name>
+          <description>Interrupt state and clear register</description>
+          <addressOffset>0x00</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <cluster>
+          <dim>2</dim>
+          <dimIncrement>0x40</dimIncrement>
+          <name>group[%s]</name>
+          <description>Pulse-Width Modulation channel group</description>
+          <addressOffset>0x40</addressOffset>
+          <register>
+            <name>config</name>
+            <description>Peripheral group configuration</description>
+            <addressOffset>0x00</addressOffset>
+            <fields>
+              <field>
+                <name>clock_select</name>
+                <description>Select group clock source</description>
+                <lsb>30</lsb>
+                <msb>31</msb>
+                <writeConstraint>
+                  <useEnumeratedValues>true</useEnumeratedValues>
+                </writeConstraint>
+                <enumeratedValues>
+                  <name>ClockSource</name>
+                  <enumeratedValue>
+                    <name>xtal</name>
+                    <description>External crystal as clock source</description>
+                    <value>0</value>
+                  </enumeratedValue>
+                  <enumeratedValue>
+                    <name>bclk</name>
+                    <description>Bus clock as clock source</description>
+                    <value>1</value>
+                  </enumeratedValue>
+                  <enumeratedValue>
+                    <name>f32k</name>
+                    <description>32-kHz clock source</description>
+                    <value>2</value>
+                  </enumeratedValue>
+                </enumeratedValues>
+              </field>
+              <field>
+                <name>stop_state</name>
+                <description>Is this peripheral stopped?</description>
+                <lsb>29</lsb>
+                <msb>29</msb>
+              </field>
+              <field>
+                <name>stop_mode</name>
+                <description>Mode to stop this peripheral</description>
+                <lsb>28</lsb>
+                <msb>28</msb>
+              </field>
+              <field>
+                <name>stop_function</name>
+                <description>Enable or disable stop function</description>
+                <lsb>27</lsb>
+                <msb>27</msb>
+              </field>
+              <field>
+                <name>external_polarity</name>
+                <description>Polarity for external pin break function</description>
+                <lsb>26</lsb>
+                <msb>26</msb>
+              </field> 
+              <field>
+                <name>external_break</name>
+                <description>Enable external pin signal break</description>
+                <lsb>25</lsb>
+                <msb>25</msb>
+              </field>
+              <field>
+                <name>software_break</name>
+                <description>Enable software signal break</description>
+                <lsb>24</lsb>
+                <msb>24</msb>
+              </field> 
+              <field>
+                <name>adc_trigger_source</name>
+                <description>Select channel in Analog-to-Digital Converter to interact with this peripheral\n\n
+**This field only works with PWM0.** PWM1 does not have this feature.</description>
+                <lsb>20</lsb>
+                <msb>23</msb>
+              </field>
+              <field>
+                <name>stop_on_repeat</name>
+                <description>Enable or disable stop on one repeat cycle completed</description>
+                <lsb>19</lsb>
+                <msb>19</msb>
+              </field>
+            </fields>
+          </register>
+          <register>
+            <name>channel</name>
+            <description>Channel configuration register</description>
+            <addressOffset>0x04</addressOffset>
+            <fields>
+              <field>
+                <dim>4</dim>
+                <dimIncrement>4</dimIncrement>
+                <name>positive_signal[%s]</name>
+                <description>Enable or disable positive signal for channel</description>
+                <lsb>0</lsb>
+                <msb>0</msb>
+              </field>
+              <field>
+                <dim>4</dim>
+                <dimIncrement>4</dimIncrement>
+                <name>positive_idle[%s]</name>
+                <description>Idle state of positive signal</description>
+                <lsb>1</lsb>
+                <msb>1</msb>
+              </field>
+              <field>
+                <dim>4</dim>
+                <dimIncrement>4</dimIncrement>
+                <name>negative_signal[%s]</name>
+                <description>Enable or disable negative signal for channel</description>
+                <lsb>2</lsb>
+                <msb>2</msb>
+              </field>
+              <field>
+                <dim>4</dim>
+                <dimIncrement>4</dimIncrement>
+                <name>negative_idle[%s]</name>
+                <description>Idle state of negative signal</description>
+                <lsb>3</lsb>
+                <msb>3</msb>
+              </field>
+              <field>
+                <dim>4</dim>
+                <dimIncrement>2</dimIncrement>
+                <name>positive_polarity[%s]</name>
+                <description>Polarity of positive signal</description>
+                <lsb>16</lsb>
+                <msb>16</msb>
+              </field>
+              <field>
+                <dim>4</dim>
+                <dimIncrement>2</dimIncrement>
+                <name>negative_polarity[%s]</name>
+                <description>Polarity of negative signal</description>
+                <lsb>17</lsb>
+                <msb>17</msb>
+              </field>
+              <field>
+                <dim>4</dim>
+                <dimIncrement>2</dimIncrement>
+                <name>positive_break[%s]</name>
+                <description>Break state on positive signal of this channel</description>
+                <lsb>24</lsb>
+                <msb>24</msb>
+              </field>
+              <field>
+                <dim>4</dim>
+                <dimIncrement>2</dimIncrement>
+                <name>negative_break[%s]</name>
+                <description>Break state on negative signal of this channel</description>
+                <lsb>25</lsb>
+                <msb>25</msb>
+              </field>
+            </fields>
+          </register>
+          <register>
+            <name>period</name>
+            <description>Pulse clock period register</description>
+            <addressOffset>0x08</addressOffset>
+            <fields>
+              <field>
+                <name>interrupt_cycles</name>
+                <description>If internal counter reaches this cycle count, it interrupts</description>
+                <lsb>0</lsb>
+                <msb>15</msb>
+              </field>
+              <field>
+                <name>repeat_cycles</name>
+                <description>How many clock cycles a Pulse-Width Modulation cycle includes</description>
+                <lsb>16</lsb>
+                <msb>31</msb>
+              </field>
+            </fields>
+          </register>
+          <register>
+            <name>dead_time</name>
+            <description>Dead time for each channel</description>
+            <addressOffset>0x0C</addressOffset>
+            <fields>
+              <field>
+                <dim>4</dim>
+                <dimIncrement>8</dimIncrement>
+                <name>channel[%s]</name>
+                <description>Dead time for each channel in cycles</description>
+                <lsb>0</lsb>
+                <msb>7</msb>
+              </field>
+            </fields>
+          </register>
+          <register>
+            <dim>4</dim>
+            <dimIncrement>0x04</dimIncrement>
+            <name>threshold[%s]</name>
+            <description>Channel internal counter threshold</description>
+            <addressOffset>0x10</addressOffset>
+            <fields>
+              <field>
+                <name>high</name>
+                <description>Highest value for internal counter that sets positive signal to 1 and negative to 0</description>
+                <lsb>16</lsb>
+                <msb>31</msb>
+              </field>
+              <field>
+                <name>low</name>
+                <description>Lowest value for internal counter that sets positive signal to 1 and negative to 0</description>
+                <lsb>0</lsb>
+                <msb>15</msb>
+              </field>
+            </fields>
+          </register>
+          <register>
+            <name>interrupt_state</name>
+            <description>Interrupt state register</description>
+            <addressOffset>0x20</addressOffset>
+            <resetValue>0x00000000</resetValue>
+            <resetMask>0xffffffff</resetMask>
+            <access>read-only</access>
+            <writeConstraint>
+              <useEnumeratedValues>true</useEnumeratedValues>
+            </writeConstraint>
+            <fields>
+              <field>
+                <dim>4</dim>
+                <dimIncrement>2</dimIncrement>
+                <name>threshold_low[%s]</name>
+                <description>Intenal counter for channel have exceeded low threshold</description>
+                <lsb>0</lsb>
+                <msb>0</msb>
+                <enumeratedValues>
+                  <name>InterruptState</name>
+                  <enumeratedValue>
+                    <name>has_interrupt</name>
+                    <description>Has interrupt</description>
+                    <value>1</value>
+                  </enumeratedValue>
+                  <enumeratedValue>
+                    <name>no_interrupt</name>
+                    <description>No interrupt occurred</description>
+                    <value>0</value>
+                  </enumeratedValue>
+                </enumeratedValues>
+              </field>
+              <field>
+                <dim>4</dim>
+                <dimIncrement>2</dimIncrement>
+                <name>threshold_high[%s]</name>
+                <description>Intenal counter for channel have exceeded high threshold</description>
+                <lsb>1</lsb>
+                <msb>1</msb>
+                <enumeratedValues derivedFrom="threshold_low[%s].InterruptState" />
+              </field>
+              <field>
+                <name>interrupt_period</name>
+                <description>Intenal counter for channel have exceeded interrupt cycle threshold</description>
+                <lsb>8</lsb>
+                <msb>8</msb>
+                <enumeratedValues derivedFrom="threshold_low[%s].InterruptState" />
+              </field>
+              <field>
+                <name>external_break</name>
+                <description>External break signal occurred</description>
+                <lsb>9</lsb>
+                <msb>9</msb>
+                <enumeratedValues derivedFrom="threshold_low[%s].InterruptState" />
+              </field>
+              <field>
+                <name>repeat</name>
+                <description>Peripheral group have completed one repeat cycle</description>
+                <lsb>10</lsb>
+                <msb>10</msb>
+                <enumeratedValues derivedFrom="threshold_low[%s].InterruptState" />
+              </field>
+            </fields>
+          </register>
+          <register>
+            <name>interrupt_mask</name>
+            <description>Interrupt mask register</description>
+            <addressOffset>0x24</addressOffset>
+            <resetValue>0x0000007f</resetValue>
+            <resetMask>0xffffffff</resetMask>
+            <writeConstraint>
+              <useEnumeratedValues>true</useEnumeratedValues>
+            </writeConstraint>
+            <fields>
+              <field>
+                <dim>4</dim>
+                <dimIncrement>2</dimIncrement>
+                <name>threshold_low[%s]</name>
+                <description>Intenal counter for channel have exceeded low threshold</description>
+                <lsb>0</lsb>
+                <msb>0</msb>
+                <enumeratedValues>
+                  <name>InterruptMask</name>
+                  <enumeratedValue>
+                    <name>mask</name>
+                    <description>Mask interrupt</description>
+                    <value>1</value>
+                  </enumeratedValue>
+                  <enumeratedValue>
+                    <name>unmask</name>
+                    <description>Unmask interrupt</description>
+                    <value>0</value>
+                  </enumeratedValue>
+                </enumeratedValues>
+              </field>
+              <field>
+                <dim>4</dim>
+                <dimIncrement>2</dimIncrement>
+                <name>threshold_high[%s]</name>
+                <description>Intenal counter for channel have exceeded high threshold</description>
+                <lsb>1</lsb>
+                <msb>1</msb>
+                <enumeratedValues derivedFrom="threshold_low[%s].InterruptMask" />
+              </field>
+              <field>
+                <name>interrupt_period</name>
+                <description>Intenal counter for channel have exceeded interrupt cycle threshold</description>
+                <lsb>8</lsb>
+                <msb>8</msb>
+                <enumeratedValues derivedFrom="threshold_low[%s].InterruptMask" />
+              </field>
+              <field>
+                <name>external_break</name>
+                <description>External break signal occurred</description>
+                <lsb>9</lsb>
+                <msb>9</msb>
+                <enumeratedValues derivedFrom="threshold_low[%s].InterruptMask" />
+              </field>
+              <field>
+                <name>repeat</name>
+                <description>Peripheral group have completed one repeat cycle</description>
+                <lsb>10</lsb>
+                <msb>10</msb>
+                <enumeratedValues derivedFrom="threshold_low[%s].InterruptMask" />
+              </field>
+            </fields>
+          </register>
+          <register>
+            <name>interrupt_clear</name>
+            <description>Clear interrupt register</description>
+            <addressOffset>0x28</addressOffset>
+            <resetValue>0x00000000</resetValue>
+            <resetMask>0xffffffff</resetMask>
+            <access>write-only</access>
+            <writeConstraint>
+              <useEnumeratedValues>true</useEnumeratedValues>
+            </writeConstraint>
+            <fields>
+              <field>
+                <dim>4</dim>
+                <dimIncrement>2</dimIncrement>
+                <name>threshold_low[%s]</name>
+                <description>Intenal counter for channel have exceeded low threshold</description>
+                <lsb>0</lsb>
+                <msb>0</msb>
+                <enumeratedValues>
+                  <name>InterruptClear</name>
+                  <enumeratedValue>
+                    <name>clear</name>
+                    <description>Write 1 to clear interrupt state</description>
+                    <value>0x1</value>
+                  </enumeratedValue>
+                </enumeratedValues>
+              </field>
+              <field>
+                <dim>4</dim>
+                <dimIncrement>2</dimIncrement>
+                <name>threshold_high[%s]</name>
+                <description>Intenal counter for channel have exceeded high threshold</description>
+                <lsb>1</lsb>
+                <msb>1</msb>
+                <enumeratedValues derivedFrom="threshold_low[%s].InterruptClear" />
+              </field>
+              <field>
+                <name>interrupt_period</name>
+                <description>Intenal counter for channel have exceeded interrupt cycle threshold</description>
+                <lsb>8</lsb>
+                <msb>8</msb>
+                <enumeratedValues derivedFrom="threshold_low[%s].InterruptClear" />
+              </field>
+              <field>
+                <name>external_break</name>
+                <description>External break signal occurred</description>
+                <lsb>9</lsb>
+                <msb>9</msb>
+                <enumeratedValues derivedFrom="threshold_low[%s].InterruptClear" />
+              </field>
+              <field>
+                <name>repeat</name>
+                <description>Peripheral group have completed one repeat cycle</description>
+                <lsb>10</lsb>
+                <msb>10</msb>
+                <enumeratedValues derivedFrom="threshold_low[%s].InterruptClear" />
+              </field>
+            </fields>
+          </register>
+          <register>
+            <name>interrupt_enable</name>
+            <description>Interrupt enable register</description>
+            <addressOffset>0x2C</addressOffset>
+            <resetValue>0x0000007f</resetValue>
+            <resetMask>0xffffffff</resetMask>
+            <writeConstraint>
+              <useEnumeratedValues>true</useEnumeratedValues>
+            </writeConstraint>
+            <fields>
+              <field>
+                <dim>4</dim>
+                <dimIncrement>2</dimIncrement>
+                <name>threshold_low[%s]</name>
+                <description>Intenal counter for channel have exceeded low threshold</description>
+                <lsb>0</lsb>
+                <msb>0</msb>
+                <enumeratedValues>
+                  <name>InterruptEnable</name>
+                  <enumeratedValue>
+                    <name>enable</name>
+                    <description>Enable interrupt</description>
+                    <value>1</value>
+                  </enumeratedValue>
+                  <enumeratedValue>
+                    <name>disable</name>
+                    <description>Disable interrupt</description>
+                    <value>0</value>
+                  </enumeratedValue>
+                </enumeratedValues>
+              </field>
+              <field>
+                <dim>4</dim>
+                <dimIncrement>2</dimIncrement>
+                <name>threshold_high[%s]</name>
+                <description>Intenal counter for channel have exceeded high threshold</description>
+                <lsb>1</lsb>
+                <msb>1</msb>
+                <enumeratedValues derivedFrom="threshold_low[%s].InterruptEnable" />
+              </field>
+              <field>
+                <name>interrupt_period</name>
+                <description>Intenal counter for channel have exceeded interrupt cycle threshold</description>
+                <lsb>8</lsb>
+                <msb>8</msb>
+                <enumeratedValues derivedFrom="threshold_low[%s].InterruptEnable" />
+              </field>
+              <field>
+                <name>external_break</name>
+                <description>External break signal occurred</description>
+                <lsb>9</lsb>
+                <msb>9</msb>
+                <enumeratedValues derivedFrom="threshold_low[%s].InterruptEnable" />
+              </field>
+              <field>
+                <name>repeat</name>
+                <description>Peripheral group have completed one repeat cycle</description>
+                <lsb>10</lsb>
+                <msb>10</msb>
+                <enumeratedValues derivedFrom="threshold_low[%s].InterruptEnable" />
+              </field>
+            </fields>
+          </register>
+        </cluster>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>TIMER</name>
+      <description>Timer control</description>
+      <baseAddress>0x2000A500</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x1000</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>todo</name>
+          <description>??</description>
+          <addressOffset>0</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>IR</name>
+      <description>Infrared receiver module</description>
+      <baseAddress>0x2000A600</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x100</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>transmit_config</name>
+          <description>??</description>
+          <addressOffset>0x00</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>transmit_interrupt</name>
+          <description>??</description>
+          <addressOffset>0x04</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <dim>2</dim>
+          <dimIncrement>0x04</dimIncrement>
+          <name>transmit_data[%s]</name>
+          <description>??</description>
+          <addressOffset>0x08</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>transmit_width</name>
+          <description>??</description>
+          <addressOffset>0x10</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>receive_config</name>
+          <description>??</description>
+          <addressOffset>0x80</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>receive_interrupt</name>
+          <description>??</description>
+          <addressOffset>0x84</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>receive_width</name>
+          <description>??</description>
+          <addressOffset>0x88</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>receive_bit_count</name>
+          <description>??</description>
+          <addressOffset>0x90</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <dim>2</dim>
+          <dimIncrement>0x04</dimIncrement>
+          <name>receive_data[%s]</name>
+          <description>??</description>
+          <addressOffset>0x94</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
     <peripheral>
       <name>I2S</name>
       <description>Inter-IC Sound controller</description>
@@ -2558,6 +3150,277 @@ DMA request will not be asserted if `transmit_available` is less than this value
       <addressBlock>
         <offset>0</offset>
         <size>0x100</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>todo</name>
+          <description>??</description>
+          <addressOffset>0</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>PDS</name>
+      <description>Power-Down Sleep control</description>
+      <baseAddress>0x2000E000</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x1000</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>touch_config</name>
+          <description>??</description>
+          <addressOffset>0xA00</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>touch_channel</name>
+          <description>??</description>
+          <addressOffset>0xA04</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>touch_process</name>
+          <description>??</description>
+          <addressOffset>0xA08</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>touch_sleep</name>
+          <description>??</description>
+          <addressOffset>0xA0C</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>touch_delay</name>
+          <description>??</description>
+          <addressOffset>0xA10</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <dim>6</dim>
+          <dimIncrement>0x04</dimIncrement>
+          <name>touch_force[%s]</name>
+          <description>??</description>
+          <addressOffset>0xA14</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <dim>3</dim>
+          <dimIncrement>0x04</dimIncrement>
+          <name>touch_voltage[%s]</name>
+          <description>??</description>
+          <addressOffset>0xA2C</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <dim>12</dim>
+          <dimIncrement>0x04</dimIncrement>
+          <name>touch_raw[%s]</name>
+          <description>??</description>
+          <addressOffset>0xA38</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <!-- todo: Channel_LTA_data_0? -->
+        <!-- todo: Channel_FLT_data_0? -->
+        <register>
+          <name>touch_interrupt_0</name>
+          <description>??</description>
+          <addressOffset>0xACC</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>touch_interrupt_1</name>
+          <description>??</description>
+          <addressOffset>0xAD0</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <!-- todo: registers -->
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>HBN</name>
+      <description>Hibernate (Deep sleep) control</description>
+      <baseAddress>0x2000F000</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x800</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>control</name>
+          <description>Miscellaneous control register</description>
+          <addressOffset>0x00</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>time_lo</name>
+          <description>Low bits of hibernate time</description>
+          <addressOffset>0x04</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>time_hi</name>
+          <description>High bits of hibernate time</description>
+          <addressOffset>0x08</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>rtc_time_lo</name>
+          <description>Low bits of Real-Time Clock time</description>
+          <addressOffset>0x0C</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>rtc_time_hi</name>
+          <description>High bits of Real-Time Clock time</description>
+          <addressOffset>0x10</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>interrupt_mode</name>
+          <description>Hibernate interrupt contol</description>
+          <addressOffset>0x14</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>interrupt_state</name>
+          <description>Hibernate interrupt state</description>
+          <addressOffset>0x18</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>interrupt_clear</name>
+          <description>Clear hibernate interrupt</description>
+          <addressOffset>0x1C</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <!-- todo: HBN_PIR_CFG -->
+        <!-- todo: HBN_PIR_VTH -->
+        <!-- todo: HBN_PIR_INTERVAL -->
+        <!-- todo: HBN_BOR_CFG -->
+        <register>
+          <name>global</name>
+          <description>Global hibernate configuration</description>
+          <addressOffset>0x30</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>sram</name>
+          <description>Static Random-Access Memory hibernate control</description>
+          <addressOffset>0x34</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <!-- todo: HBN_PAD_CTRL_0 -->
+        <!-- todo: HBN_PAD_CTRL_1 -->
+        <register>
+          <name>rc32k</name>
+          <description>32-kHz internal RC oscillator control</description>
+          <addressOffset>0x200</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>xtal32k</name>
+          <description>External crystal oscillator control</description>
+          <addressOffset>0x204</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>rtc_control_0</name>
+          <description>Real-Time Clock control and reset register 0</description>
+          <addressOffset>0x208</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>rtc_control_1</name>
+          <description>Real-Time Clock control and reset register 1</description>
+          <addressOffset>0x20C</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>AUDIO_PWM</name>
+      <description>Audio Pulse-Width Modulation controller</description>
+      <baseAddress>0x20055000</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x1000</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>todo</name>
+          <description>??</description>
+          <addressOffset>0</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>EFUSE</name>
+      <description>eFuse memory control</description>
+      <baseAddress>0x20056000</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x1000</size>
         <usage>registers</usage>
       </addressBlock>
       <registers>
