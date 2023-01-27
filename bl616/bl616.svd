@@ -27,7 +27,7 @@ See the Mulan PSL v2 for more details.
   <peripherals>
     <peripheral>
       <name>GLB</name>
-      <description>Global register</description>
+      <description>Global configuration register</description>
       <baseAddress>0x20000000</baseAddress>
       <addressBlock>
         <offset>0</offset>
@@ -41,6 +41,2228 @@ See the Mulan PSL v2 for more details.
           <addressOffset>0</addressOffset>
           <fields>
             <!-- todo: fields -->
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>GPIP</name>
+      <description>Generic DAC, ADC and ACOMP interface control</description>
+      <baseAddress>0x20002000</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x1000</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>todo</name>
+          <description>??</description>
+          <addressOffset>0</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>SEC</name>
+      <description>Secure Engine</description>
+      <baseAddress>0x20004000</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x1000</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>todo</name>
+          <description>??</description>
+          <addressOffset>0</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <dim>2</dim>
+      <dimIncrement>0x100</dimIncrement>
+      <name>UART[%s]</name>
+      <description>Universal Asynchronous Receiver Transmitter</description>
+      <baseAddress>0x2000A000</baseAddress>
+      <access>read-write</access>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x100</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>transmit_config</name>
+          <description>Transmit configuration register</description>
+          <addressOffset>0x00</addressOffset>
+          <resetValue>0x00008f00</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <fields>
+            <field>
+              <name>transfer_length</name>
+              <description>Length of words per UART transmit transfer\n\n
+This field is ignored when `freerun` mode is enabled.</description>
+              <lsb>16</lsb>
+              <msb>31</msb>
+            </field>
+            <field>
+              <name>break_bits</name>
+              <description>Number of break bits for LIN protocol</description>
+              <lsb>13</lsb>
+              <msb>15</msb>
+            </field>
+            <field>
+              <name>stop_bits</name>
+              <description>Number of stop bits</description>
+              <lsb>11</lsb>
+              <msb>12</msb>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>zero_p_five</name>
+                  <description>0.5 stop bits</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>one</name>
+                  <description>1 stop bit</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>one_p_five</name>
+                  <description>1.5 stop bits</description>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>two</name>
+                  <description>2 stop bits</description>
+                  <value>3</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>word_length</name>
+              <description>Bit count for each transmit data word</description>
+              <lsb>8</lsb>
+              <msb>10</msb>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>five</name>
+                  <description>Each word includes 5 bits</description>
+                  <value>4</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>six</name>
+                  <description>Each word includes 6 bits</description>
+                  <value>5</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>seven</name>
+                  <description>Each word includes 7 bits</description>
+                  <value>6</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>eight</name>
+                  <description>Each word includes 8 bits</description>
+                  <value>7</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>ir_inverse</name>
+              <description>Inverse transmit signal output in IR mode</description>
+              <lsb>7</lsb>
+              <msb>7</msb>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>inverse</name>
+                  <description>Inverse transmit input in IR mode</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>no_inverse</name>
+                  <description>Don't inverse transmit input in IR mode</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>ir_transmit</name>
+              <description>Enable IR transmit mode</description>
+              <lsb>6</lsb>
+              <msb>6</msb>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>enable</name>
+                  <description>Enable IR transmit mode</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>disable</name>
+                  <description>Disable IR transmit mode</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>parity_mode</name>
+              <description>Select transmit parity mode if enabled</description>
+              <lsb>5</lsb>
+              <msb>5</msb>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>odd</name>
+                  <description>Odd parity if `parity_enable` is set</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>even</name>
+                  <description>Even parity if `parity_enable` is set</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>parity_enable</name>
+              <description>Enable transmit parity check</description>
+              <lsb>4</lsb>
+              <msb>4</msb>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>enable</name>
+                  <description>Enable transmit parity check</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>disable</name>
+                  <description>Disable transmit parity check</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>lin_transmit</name>
+              <description>Local Interconnect Network protocol enable</description>
+              <lsb>3</lsb>
+              <msb>3</msb>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>enable</name>
+                  <description>Enable Local Interconnect Network protocol</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>disable</name>
+                  <description>Disable Local Interconnect Network protocol</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>freerun</name>
+              <description>Enable freerun mode</description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>enable</name>
+                  <description>Enable freerun mode</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>disable</name>
+                  <description>Disable freerun mode</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>cts</name>
+              <description>Enable Clear-to-Send flow control signal</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>enable</name>
+                  <description>Enable Clear-to-Send flow control signal</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>disable</name>
+                  <description>Disable Clear-to-Send flow control signal</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>function</name>
+              <description>Enable transmit function</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>enable</name>
+                  <description>Enable UART receive function signal</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>disable</name>
+                  <description>Disable UART receive function signal</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>receive_config</name>
+          <description>Receive configuration register</description>
+          <addressOffset>0x04</addressOffset>
+          <resetValue>0x00000700</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <fields>
+            <field>
+              <name>transfer_length</name>
+              <description>Length of words per UART receive transfer</description>
+              <lsb>16</lsb>
+              <msb>31</msb>
+            </field>
+            <field>
+              <name>deglitch_cycle</name>
+              <description>De-glitch function cycle count</description>
+              <lsb>12</lsb>
+              <msb>15</msb>
+            </field>
+            <field>
+              <name>deglitch_enable</name>
+              <description>Enable receive de-glitch function</description>
+              <lsb>11</lsb>
+              <msb>11</msb>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>enable</name>
+                  <description>Enable de-glitch function upon receive</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>disable</name>
+                  <description>Disable de-glitch function upon receive</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>word_length</name>
+              <description>Bit count for each receive data word</description>
+              <lsb>8</lsb>
+              <msb>10</msb>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>five</name>
+                  <description>Each word includes 5 bits</description>
+                  <value>4</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>six</name>
+                  <description>Each word includes 6 bits</description>
+                  <value>5</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>seven</name>
+                  <description>Each word includes 7 bits</description>
+                  <value>6</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>eight</name>
+                  <description>Each word includes 8 bits</description>
+                  <value>7</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>ir_inverse</name>
+              <description>Inverse receive signal output in IR mode</description>
+              <lsb>7</lsb>
+              <msb>7</msb>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>inverse</name>
+                  <description>Inverse receive input in IR mode</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>no_inverse</name>
+                  <description>Don't inverse receive input in IR mode</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>ir_receive</name>
+              <description>Enable IR receive mode</description>
+              <lsb>6</lsb>
+              <msb>6</msb>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>enable</name>
+                  <description>Enable IR receive mode</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>disable</name>
+                  <description>Disable IR receive mode</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>parity_mode</name>
+              <description>Select receive parity mode if enabled</description>
+              <lsb>5</lsb>
+              <msb>5</msb>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>odd</name>
+                  <description>Odd parity if `parity_enable` is set</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>even</name>
+                  <description>Even parity if `parity_enable` is set</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>parity_enable</name>
+              <description>Enable receive parity check</description>
+              <lsb>4</lsb>
+              <msb>4</msb>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>enable</name>
+                  <description>Enable receive parity check</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>disable</name>
+                  <description>Disable receive parity check</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>lin_receive</name>
+              <description>Local Interconnect Network protocol enable</description>
+              <lsb>3</lsb>
+              <msb>3</msb>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>enable</name>
+                  <description>Enable Local Interconnect Network protocol</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>disable</name>
+                  <description>Disable Local Interconnect Network protocol</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>auto_baudrate</name>
+              <description>Enable receive auto baudrate detection</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>enable</name>
+                  <description>Enable auto baudrate upon receive</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>disable</name>
+                  <description>Disable auto baudrate upon receive</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>function</name>
+              <description>Enable receive function</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>enable</name>
+                  <description>Enable UART receive function signal</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>disable</name>
+                  <description>Disable UART receive function signal</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>bit_period</name>
+          <description>Bit period control register</description>
+          <addressOffset>0x08</addressOffset>
+          <resetValue>0x00ff00ff</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <fields>
+            <field>
+              <name>receive</name>
+              <description>Period of each receive bit\n\n
+Add 1 to this value and divide by clock to get receive baudrate.</description>
+              <lsb>16</lsb>
+              <msb>31</msb>
+            </field>
+            <field>
+              <name>transmit</name>
+              <description>Period of each transmit bit\n\n
+Add 1 to this value and divide by clock to get transmit baudrate.</description>
+              <lsb>0</lsb>
+              <msb>15</msb>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>data_config</name>
+          <description>Data configuration register</description>
+          <addressOffset>0x0C</addressOffset>
+          <resetValue>0x00000000</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <writeConstraint>
+            <useEnumeratedValues>true</useEnumeratedValues>
+          </writeConstraint>
+          <fields>
+            <field>
+              <name>bit_order</name>
+              <description>Enable bit inverse in each data word</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>inverse</name>
+                  <description>Each byte is sent out MSB-first</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>no_inverse</name>
+                  <description>Each byte is sent out LSB-first</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>transmit_position</name>
+          <description>IR-mode transmit position control</description>
+          <addressOffset>0x10</addressOffset>
+          <resetValue>0x009f0070</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <fields>
+            <field>
+              <name>stop</name>
+              <description>Stop position of transmit IR pulse</description>
+              <lsb>16</lsb>
+              <msb>31</msb>
+            </field>
+            <field>
+              <name>start</name>
+              <description>Start position of transmit IR pulse</description>
+              <lsb>0</lsb>
+              <msb>15</msb>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>receive_position</name>
+          <description>IR-mode receive position control</description>
+          <addressOffset>0x14</addressOffset>
+          <resetValue>0x0000006f</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <fields>
+            <field>
+              <name>start</name>
+              <description>Start position of received pulse recovered from IR signal</description>
+              <lsb>0</lsb>
+              <msb>15</msb>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>receive_timeout</name>
+          <description>Receive Time-Out interrupt control</description>
+          <addressOffset>0x18</addressOffset>
+          <resetValue>0x0000000f</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <fields>
+            <field>
+              <name>value</name>
+              <description>Timeout interrupt triggering value by bits received</description>
+              <!-- todo: what's 'bit time'? -->
+              <lsb>0</lsb>
+              <msb>7</msb>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>signal_override</name>
+          <description>Manual override of flow control signal</description>
+          <addressOffset>0x1C</addressOffset>
+          <resetValue>0x00000000</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <writeConstraint>
+            <useEnumeratedValues>true</useEnumeratedValues>
+          </writeConstraint>
+          <fields>
+            <field>
+              <name>rts_value</name>
+              <description>Value to override Request-to-Send signal if override is enabled</description>
+              <lsb>3</lsb>
+              <msb>3</msb>
+              <enumeratedValues>
+                <name>SignalAssert</name>
+                <enumeratedValue>
+                  <name>high</name>
+                  <description>Assert this signal</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>low</name>
+                  <description>Deassert this signal</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>rts_signal</name>
+              <description>Enable manual override of Request-to-Send flow control signal</description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+              <enumeratedValues>
+                <name>OverrideEnable</name>
+                <enumeratedValue>
+                  <name>enable</name>
+                  <description>Enable manual override of this signal</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>disable</name>
+                  <description>Disable manual override of this signal</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>transmit_value</name>
+              <description>Value to override transmit signal if override is enabled</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <enumeratedValues derivedFrom="rts_value.SignalAssert" />
+            </field>
+            <field>
+              <name>transmit_signal</name>
+              <description>Enable manual override of transmit signal</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <enumeratedValues derivedFrom="rts_signal.OverrideEnable" />
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>interrupt_state</name>
+          <description>Interrupt state register</description>
+          <addressOffset>0x20</addressOffset>
+          <resetValue>0x00000004</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <access>read-only</access>
+          <writeConstraint>
+            <useEnumeratedValues>true</useEnumeratedValues>
+          </writeConstraint>
+          <fields>
+            <field>
+              <name>auto_baudrate_five_five</name>
+              <description>Receive auto baudrate detection finished using 0x55 occurred</description>
+              <lsb>11</lsb>
+              <msb>11</msb>
+              <enumeratedValues>
+                <name>InterruptState</name>
+                <enumeratedValue>
+                  <name>has_interrupt</name>
+                  <description>Has interrupt</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>no_interrupt</name>
+                  <description>No interrupt occurred</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>auto_baudrate_start_bit</name>
+              <description>Receive auto baudrate detection finished using start bit occurred</description>
+              <lsb>10</lsb>
+              <msb>10</msb>
+              <enumeratedValues derivedFrom="InterruptState" />
+            </field>
+            <field>
+              <name>receive_byte_count</name>
+              <description>Receive byte count reached occurred</description>
+              <lsb>9</lsb>
+              <msb>9</msb>
+              <enumeratedValues derivedFrom="InterruptState" />
+            </field>
+            <field>
+              <name>receive_sync_error</name>
+              <description>Receive LIN mode synchronization field error occurred</description>
+              <lsb>8</lsb>
+              <msb>8</msb>
+              <enumeratedValues derivedFrom="InterruptState" />
+            </field>
+            <field>
+              <name>receive_fifo_error</name>
+              <description>Receive FIFO overflow or underflow occurred</description>
+              <lsb>7</lsb>
+              <msb>7</msb>
+              <enumeratedValues derivedFrom="InterruptState" />
+            </field>
+            <field>
+              <name>transmit_fifo_error</name>
+              <description>Transmit FIFO overflow or underflow occurred</description>
+              <lsb>6</lsb>
+              <msb>6</msb>
+              <enumeratedValues derivedFrom="InterruptState" />
+            </field>
+            <field>
+              <name>receive_parity</name>
+              <description>Receive parity check failure occurred</description>
+              <lsb>5</lsb>
+              <msb>5</msb>
+              <enumeratedValues derivedFrom="InterruptState" />
+            </field>
+            <field>
+              <name>receive_timeout</name>
+              <description>Receive timed-out interrupt occurred</description>
+              <lsb>4</lsb>
+              <msb>4</msb>
+              <enumeratedValues derivedFrom="InterruptState" />
+            </field>
+            <field>
+              <name>receive_fifo_ready</name>
+              <description>Receive FIFO ready signal raised</description>
+              <lsb>3</lsb>
+              <msb>3</msb>
+              <enumeratedValues derivedFrom="InterruptState" />
+            </field>
+            <field>
+              <name>transmit_fifo_ready</name>
+              <description>Transmit FIFO ready signal raised</description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+              <enumeratedValues derivedFrom="InterruptState" />
+            </field>
+            <field>
+              <name>receive_transfer</name>
+              <description>Receive transfer finish signal raised</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <enumeratedValues derivedFrom="InterruptState" />
+            </field>
+            <field>
+              <name>transmit_transfer</name>
+              <description>Transmit transfer finish signal raised</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <enumeratedValues derivedFrom="InterruptState" />
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>interrupt_mask</name>
+          <description>Interrupt mask register</description>
+          <addressOffset>0x24</addressOffset>
+          <resetValue>0x00000fff</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <writeConstraint>
+            <useEnumeratedValues>true</useEnumeratedValues>
+          </writeConstraint>
+          <fields>
+            <field>
+              <name>auto_baudrate_five_five</name>
+              <description>Receive auto baudrate detection finished using 0x55 occurred</description>
+              <lsb>11</lsb>
+              <msb>11</msb>
+              <enumeratedValues>
+                <name>InterruptMask</name>
+                <enumeratedValue>
+                  <name>mask</name>
+                  <description>Mask interrupt</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>unmask</name>
+                  <description>Unmask interrupt</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>auto_baudrate_start_bit</name>
+              <description>Receive auto baudrate detection finished using start bit interrupt mask</description>
+              <lsb>10</lsb>
+              <msb>10</msb>
+              <enumeratedValues derivedFrom="InterruptMask" />
+            </field>
+            <field>
+              <name>receive_byte_count</name>
+              <description>Receive byte count reached interrupt mask</description>
+              <lsb>9</lsb>
+              <msb>9</msb>
+              <enumeratedValues derivedFrom="InterruptMask" />
+            </field>
+            <field>
+              <name>receive_sync_error</name>
+              <description>Receive LIN mode synchronization field error interrupt mask</description>
+              <lsb>8</lsb>
+              <msb>8</msb>
+              <enumeratedValues derivedFrom="InterruptMask" />
+            </field>
+            <field>
+              <name>receive_fifo_error</name>
+              <description>Receive FIFO overflow or underflow interrupt mask</description>
+              <lsb>7</lsb>
+              <msb>7</msb>
+              <enumeratedValues derivedFrom="InterruptMask" />
+            </field>
+            <field>
+              <name>transmit_fifo_error</name>
+              <description>Transmit FIFO overflow or underflow interrupt mask</description>
+              <lsb>6</lsb>
+              <msb>6</msb>
+              <enumeratedValues derivedFrom="InterruptMask" />
+            </field>
+            <field>
+              <name>receive_parity</name>
+              <description>Receive parity check failure interrupt mask</description>
+              <lsb>5</lsb>
+              <msb>5</msb>
+              <enumeratedValues derivedFrom="InterruptMask" />
+            </field>
+            <field>
+              <name>receive_timeout</name>
+              <description>Receive timed-out interrupt mask</description>
+              <lsb>4</lsb>
+              <msb>4</msb>
+              <enumeratedValues derivedFrom="InterruptMask" />
+            </field>
+            <field>
+              <name>receive_fifo_ready</name>
+              <description>Receive FIFO ready signal interrupt mask</description>
+              <lsb>3</lsb>
+              <msb>3</msb>
+              <enumeratedValues derivedFrom="InterruptMask" />
+            </field>
+            <field>
+              <name>transmit_fifo_ready</name>
+              <description>Transmit FIFO ready signal interrupt mask</description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+              <enumeratedValues derivedFrom="InterruptMask" />
+            </field>
+            <field>
+              <name>receive_transfer</name>
+              <description>Receive transfer finish signal interrupt mask</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <enumeratedValues derivedFrom="InterruptMask" />
+            </field>
+            <field>
+              <name>transmit_transfer</name>
+              <description>Transmit transfer finish signal interrupt mask</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <enumeratedValues derivedFrom="InterruptMask" />
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>interrupt_clear</name>
+          <description>Clear interrupt register</description>
+          <addressOffset>0x28</addressOffset>
+          <resetValue>0x00000000</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <access>write-only</access>
+          <writeConstraint>
+            <useEnumeratedValues>true</useEnumeratedValues>
+          </writeConstraint>
+          <fields>
+            <field>
+              <name>auto_baudrate_five_five</name>
+              <description>Write 1 to clear receive auto baudrate detection finished using 0x55</description>
+              <lsb>11</lsb>
+              <msb>11</msb>
+              <enumeratedValues>
+                <name>InterruptClear</name>
+                <enumeratedValue>
+                  <name>clear</name>
+                  <description>Write 1 to clear interrupt state</description>
+                  <value>0x1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>auto_baudrate_start_bit</name>
+              <description>Write 1 to clear receive auto baudrate detection finished using start bit</description>
+              <lsb>10</lsb>
+              <msb>10</msb>
+              <enumeratedValues derivedFrom="InterruptClear" />
+            </field>
+            <field>
+              <name>receive_byte_count</name>
+              <description>Write 1 to clear receive byte count reached</description>
+              <lsb>9</lsb>
+              <msb>9</msb>
+              <enumeratedValues derivedFrom="InterruptClear" />
+            </field>
+            <field>
+              <name>receive_sync_error</name>
+              <description>Write 1 to clear receive LIN mode synchronization field error</description>
+              <lsb>8</lsb>
+              <msb>8</msb>
+              <enumeratedValues derivedFrom="InterruptClear" />
+            </field>
+            <field>
+              <name>receive_parity</name>
+              <description>Write 1 to clear receive parity check failure</description>
+              <lsb>5</lsb>
+              <msb>5</msb>
+              <enumeratedValues derivedFrom="InterruptClear" />
+            </field>
+            <field>
+              <name>receive_timeout</name>
+              <description>Write 1 to clear receive timed-out</description>
+              <lsb>4</lsb>
+              <msb>4</msb>
+              <enumeratedValues derivedFrom="InterruptClear" />
+            </field>
+            <field>
+              <name>receive_transfer</name>
+              <description>Write 1 to clear receive transfer finish signal</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <enumeratedValues derivedFrom="InterruptClear" />
+            </field>
+            <field>
+              <name>transmit_transfer</name>
+              <description>Write 1 to clear transmit transfer finish signal</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <enumeratedValues derivedFrom="InterruptClear" />
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>interrupt_enable</name>
+          <description>Interrupt enable register</description>
+          <addressOffset>0x2C</addressOffset>
+          <resetValue>0x000000ff</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <writeConstraint>
+            <useEnumeratedValues>true</useEnumeratedValues>
+          </writeConstraint>
+          <fields>
+            <field>
+              <name>auto_baudrate_five_five</name>
+              <description>Receive auto baudrate detection finished using 0x55 interrupt enable</description>
+              <lsb>11</lsb>
+              <msb>11</msb>
+              <enumeratedValues>
+                <name>InterruptEnable</name>
+                <enumeratedValue>
+                  <name>enable</name>
+                  <description>Enable interrupt</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>disable</name>
+                  <description>Disable interrupt</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>auto_baudrate_start_bit</name>
+              <description>Receive auto baudrate detection finished using start bit interrupt enable</description>
+              <lsb>10</lsb>
+              <msb>10</msb>
+              <enumeratedValues derivedFrom="InterruptEnable" />
+            </field>
+            <field>
+              <name>receive_byte_count</name>
+              <description>Receive byte count reached interrupt enable</description>
+              <lsb>9</lsb>
+              <msb>9</msb>
+              <enumeratedValues derivedFrom="InterruptEnable" />
+            </field>
+            <field>
+              <name>receive_sync_error</name>
+              <description>Receive LIN mode synchronization field error interrupt enable</description>
+              <lsb>8</lsb>
+              <msb>8</msb>
+              <enumeratedValues derivedFrom="InterruptEnable" />
+            </field>
+            <field>
+              <name>receive_fifo_error</name>
+              <description>Receive FIFO overflow or underflow interrupt enable</description>
+              <lsb>7</lsb>
+              <msb>7</msb>
+              <enumeratedValues derivedFrom="InterruptEnable" />
+            </field>
+            <field>
+              <name>transmit_fifo_error</name>
+              <description>Transmit FIFO overflow or underflow interrupt enable</description>
+              <lsb>6</lsb>
+              <msb>6</msb>
+              <enumeratedValues derivedFrom="InterruptEnable" />
+            </field>
+            <field>
+              <name>receive_parity</name>
+              <description>Receive parity check failure interrupt enable</description>
+              <lsb>5</lsb>
+              <msb>5</msb>
+              <enumeratedValues derivedFrom="InterruptEnable" />
+            </field>
+            <field>
+              <name>receive_timeout</name>
+              <description>Receive timed-out interrupt enable</description>
+              <lsb>4</lsb>
+              <msb>4</msb>
+              <enumeratedValues derivedFrom="InterruptEnable" />
+            </field>
+            <field>
+              <name>receive_fifo_ready</name>
+              <description>Receive FIFO ready signal interrupt enable</description>
+              <lsb>3</lsb>
+              <msb>3</msb>
+              <enumeratedValues derivedFrom="InterruptEnable" />
+            </field>
+            <field>
+              <name>transmit_fifo_ready</name>
+              <description>Transmit FIFO ready signal interrupt enable</description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+              <enumeratedValues derivedFrom="InterruptEnable" />
+            </field>
+            <field>
+              <name>receive_transfer</name>
+              <description>Receive transfer signal interrupt enable</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <enumeratedValues derivedFrom="InterruptEnable" />
+            </field>
+            <field>
+              <name>transmit_transfer</name>
+              <description>Transmit transfer signal interrupt enable</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <enumeratedValues derivedFrom="InterruptEnable" />
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>bus_state</name>
+          <description>Bus state register</description>
+          <addressOffset>0x30</addressOffset>
+          <resetValue>0x00000000</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <access>read-only</access>
+          <fields>
+            <field>
+              <name>receive_busy</name>
+              <description>Indicates that UART receive bus is busy</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <enumeratedValues>
+                <name>BusBusy</name>
+                <enumeratedValue>
+                  <name>busy</name>
+                  <description>Bus is busy</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>idle</name>
+                  <description>Bus is not busy</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>transmit_busy</name>
+              <description>Indicates that UART transmit bus is busy</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <enumeratedValues derivedFrom="BusBusy" />
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>auto_baudrate</name>
+          <description>Auto baudrate detection register</description>
+          <addressOffset>0x34</addressOffset>
+          <resetValue>0x00000000</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <access>read-only</access>
+          <fields>
+            <field>
+              <name>by_five_five</name>
+              <description>Bit period of auto baudrate detection using codeword 0x55</description>
+              <lsb>16</lsb>
+              <msb>31</msb>
+            </field>
+            <field>
+              <name>by_start_bit</name>
+              <description>Bit period of auto baudrate detection using start bit</description>
+              <lsb>0</lsb>
+              <msb>15</msb>
+            </field>
+          </fields>
+        </register>
+        <!-- todo:  
+        related to auto baudrate
+        /* 0x38 : urx_abr_prd_b01 */
+        /* 0x3C : urx_abr_prd_b23 */
+        /* 0x40 : urx_abr_prd_b45 */
+        /* 0x44 : urx_abr_prd_b67 */
+        -->
+        <register>
+          <name>pulse_tolerance</name>
+          <description>Pulse width tolerance for auto baudrate</description>
+          <addressOffset>0x48</addressOffset>
+          <resetValue>0x00000003</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <writeConstraint>
+            <useEnumeratedValues>true</useEnumeratedValues>
+          </writeConstraint>
+          <fields>
+            <field>
+              <name>by_five_five</name>
+              <description>Pulse width tolerance of auto baudrate detection using codeword 0x55</description>
+              <lsb>0</lsb>
+              <msb>7</msb>
+            </field>
+          </fields>
+        </register>
+        <!-- todo: 0x50: urx_bcr_int_cfg -->
+        <register>
+          <name>rs485_transmit</name>
+          <description>RS-485 mode transmit configuration</description>
+          <addressOffset>0x54</addressOffset>
+          <resetValue>0x00000002</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <fields>
+            <field>
+              <name>polarity</name>
+              <description>RS-485 pin polarity of Driver Enable (DE) pin</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <enumeratedValues>
+                <name>Polarity</name>
+                <enumeratedValue>
+                  <name>active_high</name>
+                  <description>Driver Enable (DE) pin is active high</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>active_low</name>
+                  <description>Driver Enable (DE) pin is active low</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>function</name>
+              <description>RS-485 transceiver mode enable</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>enable</name>
+                  <description>Enable RS-485 transceiver mode\n\n
+The peripheral is connected to RS-485 transceiver, and RTS signal output becomes Driver Enable (DE) signal.</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>disable</name>
+                  <description>Disable RS-485 transceiver mode\n\n
+The peripheral operates as normal UART.</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>fifo_config_0</name>
+          <description>FIFO configuration register 0</description>
+          <addressOffset>0x80</addressOffset>
+          <resetValue>0x00000000</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <writeConstraint>
+            <useEnumeratedValues>true</useEnumeratedValues>
+          </writeConstraint>
+          <fields>
+            <field>
+              <name>receive_underflow</name>
+              <description>Receive FIFO underflow flag\n\n
+Can be cleared using `receive_clear`.</description>
+              <lsb>7</lsb>
+              <msb>7</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <name>HasUnderflow</name>
+                <enumeratedValue>
+                  <name>not_underflow</name>
+                  <description>No FIFO buffer underflow</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>underflow</name>
+                  <description>Has FIFO buffer underflow</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>receive_overflow</name>
+              <description>Receive FIFO overflow flag\n\n
+Can be cleared using `receive_clear`.</description>
+              <lsb>6</lsb>
+              <msb>6</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <name>HasOverflow</name>
+                <enumeratedValue>
+                  <name>not_overflow</name>
+                  <description>No FIFO buffer overflow</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>overflow</name>
+                  <description>Has FIFO buffer overflow</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>transmit_underflow</name>
+              <description>Transmit FIFO underflow flag\n\n
+Can be cleared using `transmit_clear`.</description>
+              <lsb>5</lsb>
+              <msb>5</msb>
+              <access>read-only</access>
+              <enumeratedValues derivedFrom="HasUnderflow" />
+            </field>
+            <field>
+              <name>transmit_overflow</name>
+              <description>Transmit FIFO overflow flag\n\n
+Can be cleared using `transmit_clear`.</description>
+              <lsb>4</lsb>
+              <msb>4</msb>
+              <access>read-only</access>
+              <enumeratedValues derivedFrom="HasOverflow" />
+            </field>
+            <field>
+              <name>receive_clear</name>
+              <description>Clears receive FIFO overflow and underflow flags</description>
+              <lsb>3</lsb>
+              <msb>3</msb>
+              <access>write-only</access>
+              <enumeratedValues>
+                <name>FlagClear</name>
+                <enumeratedValue>
+                  <name>clear</name>
+                  <description>Write 1 to clear fifo flags</description>
+                  <value>0x1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>transmit_clear</name>
+              <description>Clears transmit FIFO overflow and underflow flags</description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+              <access>write-only</access>
+              <enumeratedValues derivedFrom="FlagClear" />
+            </field>
+            <field>
+              <name>receive_dma</name>
+              <description>Enable signal of receive DMA interface</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <enumeratedValues>
+                <name>DmaEnable</name>
+                <enumeratedValue>
+                  <name>enable</name>
+                  <description>Enable DMA interface</description>
+                  <value>0x1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>disable</name>
+                  <description>Disable DMA interface</description>
+                  <value>0x0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>transmit_dma</name>
+              <description>Enable signal of transmit DMA interface</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <enumeratedValues derivedFrom="DmaEnable" />
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>fifo_config_1</name>
+          <description>FIFO configuration register 1</description>
+          <addressOffset>0x84</addressOffset>
+          <resetValue>0x00000020</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <fields>
+            <field>
+              <name>receive_threshold</name>
+              <description>Receive FIFO threshold\n\n
+DMA request will not be asserted if `receive_available` is less than this value</description>
+              <lsb>24</lsb>
+              <msb>28</msb>
+            </field>
+            <field>
+              <name>transmit_threshold</name>
+              <description>Transmit FIFO threshold\n\n
+DMA request will not be asserted if `transmit_available` is less than this value</description>
+              <lsb>16</lsb>
+              <msb>20</msb>
+            </field>
+            <field>
+              <name>receive_count</name>
+              <description>Count of available data in receive FIFO</description>
+              <lsb>8</lsb>
+              <msb>13</msb>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>transmit_count</name>
+              <description>Count of available data in transmit FIFO</description>
+              <lsb>0</lsb>
+              <msb>5</msb>
+              <access>read-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>data_write</name>
+          <description>FIFO write data register</description>
+          <addressOffset>0x88</addressOffset>
+          <resetValue>0x00000000</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <access>write-only</access>
+          <fields>
+            <field>
+              <name>value</name>
+              <description>Write data to FIFO</description>
+              <lsb>0</lsb>
+              <msb>7</msb>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>data_read</name>
+          <description>FIFO read data register</description>
+          <addressOffset>0x8C</addressOffset>
+          <resetValue>0x00000000</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <access>read-only</access>
+          <fields>
+            <field>
+              <name>value</name>
+              <description>Read data from FIFO</description>
+              <lsb>0</lsb>
+              <msb>7</msb>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <dim>1</dim>
+      <dimIncrement>0x100</dimIncrement>
+      <name>SPI[%s]</name>
+      <description>Serial Peripheral Interface</description>
+      <baseAddress>0x2000A200</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x100</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>config</name>
+          <description>Function configuration register</description>
+          <addressOffset>0x00</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>interrupt_state</name>
+          <description>Interrupt enables, masks and states</description>
+          <addressOffset>0x04</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>bus_busy</name>
+          <description>Bus busy state indicator</description>
+          <addressOffset>0x08</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>period_control</name>
+          <description>Duration of control signals</description>
+          <addressOffset>0x10</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>period_interval</name>
+          <description>Interval bitween frames</description>
+          <addressOffset>0x14</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>ignore_index</name>
+          <description>Receive ignore index configuration</description>
+          <addressOffset>0x18</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>timeout</name>
+          <description>Slave mode transmit timeout values</description>
+          <addressOffset>0x1c</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>fifo_config_0</name>
+          <description>FIFO configuration register 0</description>
+          <addressOffset>0x80</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>fifo_config_1</name>
+          <description>FIFO configuration register 1</description>
+          <addressOffset>0x84</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>data_write</name>
+          <description>FIFO write data register</description>
+          <addressOffset>0x88</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>data_read</name>
+          <description>FIFO read data register</description>
+          <addressOffset>0x8C</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <dim>2</dim>
+      <dimIncrement>0x600</dimIncrement>
+      <name>I2C[%s]</name>
+      <description>Inter-Integrated Circuit bus</description>
+      <baseAddress>0x2000A300</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x100</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>config</name>
+          <description>Function configuration register</description>
+          <addressOffset>0x00</addressOffset>
+          <resetValue>0x0000000a</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <fields>
+            <field>
+              <name>deglitch_cycle</name>
+              <description>De-glitch function cycle count</description>
+              <lsb>28</lsb>
+              <msb>31</msb>
+            </field>
+            <field>
+              <name>packet_length</name>
+              <description>Byte count for each packet</description>
+              <lsb>16</lsb>
+              <msb>23</msb>
+            </field>
+            <field>
+              <name>slave_address</name>
+              <description>I2C transaction slave address</description>
+              <lsb>8</lsb>
+              <msb>14</msb>
+            </field>
+            <field>
+              <name>sub_address_length</name>
+              <description>Byte count for I2C sub-address</description>
+              <lsb>5</lsb>
+              <msb>6</msb>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>one</name>
+                  <description>Sub-addresses include 1 byte</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>two</name>
+                  <description>Sub-addresses include 2 bytes</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>three</name>
+                  <description>Sub-addresses include 3 bytes</description>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>four</name>
+                  <description>Sub-addresses include 4 bytes</description>
+                  <value>3</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>sub_address_enable</name>
+              <description>Enable sub-address fields</description>
+              <lsb>4</lsb>
+              <msb>4</msb>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>enable</name>
+                  <description>Enable sub-address fields</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>disable</name>
+                  <description>Disable sub-address fields</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>clock_synchronize</name>
+              <description>Enable I2C clock synchronization\n\n
+Enable this bit to support multi-master and clock-stretching. It should not be turned-off normally.</description>
+              <lsb>3</lsb>
+              <msb>3</msb>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>enable</name>
+                  <description>Enable clock synchronization</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>disable</name>
+                  <description>Disable clock synchronization</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>deglitch_enable</name>
+              <description>Enable de-glitch function on all input pins</description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>enable</name>
+                  <description>Enable de-glitch function on inputs</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>disable</name>
+                  <description>Disable de-glitch function on inputs</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>transfer_direction</name>
+              <description>Packet transfer direction</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>write</name>
+                  <description>Write from master side</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>read</name>
+                  <description>Read from master side</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>master_enable</name>
+              <description>Enable signal of I2C master function\n\n
+Asserting this bit will trigger the transaction, and should be de-asserted after finish.</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>enable</name>
+                  <description>Enable I2C master function</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>disable</name>
+                  <description>Disable I2C master function</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>interrupt</name>
+          <description>Interrupt enables, states and masks</description>
+          <addressOffset>0x04</addressOffset>
+          <resetValue>0x3f003f00</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <writeConstraint>
+            <useEnumeratedValues>true</useEnumeratedValues>
+          </writeConstraint>
+          <fields>
+            <field>
+              <name>fifo_error_enable</name>
+              <description>Transmit or receive FIFO error interrupt enable</description>
+              <lsb>29</lsb>
+              <msb>29</msb>
+              <enumeratedValues>
+                <name>InterruptEnable</name>
+                <enumeratedValue>
+                  <name>enable</name>
+                  <description>Enable interrupt</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>disable</name>
+                  <description>Disable interrupt</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>arbitrate_lost_enable</name>
+              <description>Arbitration lost interrupt enable</description>
+              <lsb>28</lsb>
+              <msb>28</msb>
+              <enumeratedValues derivedFrom="InterruptEnable" />
+            </field>
+            <field>
+              <name>not_acknowledged_enable</name>
+              <description>Not-acknowledged response interrupt enable</description>
+              <lsb>27</lsb>
+              <msb>27</msb>
+              <enumeratedValues derivedFrom="InterruptEnable" />
+            </field>
+            <field>
+              <name>receive_fifo_ready_enable</name>
+              <description>Receive FIFO ready interrupt enable</description>
+              <lsb>26</lsb>
+              <msb>26</msb>
+              <enumeratedValues derivedFrom="InterruptEnable" />
+            </field>
+            <field>
+              <name>transmit_fifo_ready_enable</name>
+              <description>Transmit FIFO ready interrupt enable</description>
+              <lsb>25</lsb>
+              <msb>25</msb>
+              <enumeratedValues derivedFrom="InterruptEnable" />
+            </field>
+            <field>
+              <name>transfer_end_enable</name>
+              <description>Transfer ended interrupt enable</description>
+              <lsb>24</lsb>
+              <msb>24</msb>
+              <enumeratedValues derivedFrom="InterruptEnable" />
+            </field>
+            <field>
+              <name>arbitrate_lost_clear</name>
+              <description>Write 1 to clear arbitration lost</description>
+              <lsb>20</lsb>
+              <msb>20</msb>
+              <access>write-only</access>
+              <enumeratedValues>
+                <name>InterruptClear</name>
+                <enumeratedValue>
+                  <name>clear</name>
+                  <description>Write 1 to clear interrupt state</description>
+                  <value>0x1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>not_acknowledged_clear</name>
+              <description>Write 1 to clear not-acknowledged response</description>
+              <lsb>19</lsb>
+              <msb>19</msb>
+              <access>write-only</access>
+              <enumeratedValues derivedFrom="InterruptClear" />
+            </field>
+            <field>
+              <name>transfer_end_clear</name>
+              <description>Write 1 to clear transfer ended</description>
+              <lsb>16</lsb>
+              <msb>16</msb>
+              <access>write-only</access>
+              <enumeratedValues derivedFrom="InterruptClear" />
+            </field>
+            <field>
+              <name>fifo_error_mask</name>
+              <description>Transmit or receive FIFO error interrupt mask</description>
+              <lsb>13</lsb>
+              <msb>13</msb>
+              <enumeratedValues>
+                <name>InterruptMask</name>
+                <enumeratedValue>
+                  <name>mask</name>
+                  <description>Mask interrupt</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>unmask</name>
+                  <description>Unmask interrupt</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>arbitrate_lost_mask</name>
+              <description>Arbitration lost interrupt mask</description>
+              <lsb>12</lsb>
+              <msb>12</msb>
+              <enumeratedValues derivedFrom="InterruptMask" />
+            </field>
+            <field>
+              <name>not_acknowledged_mask</name>
+              <description>Not-acknowledged response interrupt mask</description>
+              <lsb>11</lsb>
+              <msb>11</msb>
+              <enumeratedValues derivedFrom="InterruptMask" />
+            </field>
+            <field>
+              <name>receive_fifo_ready_mask</name>
+              <description>Receive FIFO ready interrupt mask</description>
+              <lsb>10</lsb>
+              <msb>10</msb>
+              <enumeratedValues derivedFrom="InterruptMask" />
+            </field>
+            <field>
+              <name>transmit_fifo_ready_mask</name>
+              <description>Transmit FIFO ready interrupt mask</description>
+              <lsb>9</lsb>
+              <msb>9</msb>
+              <enumeratedValues derivedFrom="InterruptMask" />
+            </field>
+            <field>
+              <name>transfer_end_mask</name>
+              <description>Transfer ended interrupt mask</description>
+              <lsb>8</lsb>
+              <msb>8</msb>
+              <enumeratedValues derivedFrom="InterruptMask" />
+            </field>
+            <field>
+              <name>fifo_error_state</name>
+              <description>Transmit or receive FIFO error interrupt state\n\n
+Auto cleared when FIFO overflow or underflow error flag is cleared.</description>
+              <lsb>5</lsb>
+              <msb>5</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <name>InterruptState</name>
+                <enumeratedValue>
+                  <name>has_interrupt</name>
+                  <description>Has interrupt</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>no_interrupt</name>
+                  <description>No interrupt occurred</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>arbitrate_lost_state</name>
+              <description>Arbitration lost interrupt state</description>
+              <lsb>4</lsb>
+              <msb>4</msb>
+              <access>read-only</access>
+              <enumeratedValues derivedFrom="InterruptState" />
+            </field>
+            <field>
+              <name>not_acknowledged_state</name>
+              <description>Not-acknowledged response interrupt state</description>
+              <lsb>3</lsb>
+              <msb>3</msb>
+              <access>read-only</access>
+              <enumeratedValues derivedFrom="InterruptState" />
+            </field>
+            <field>
+              <name>receive_fifo_ready_state</name>
+              <description>Receive FIFO ready interrupt state\n\n
+Auto cleared when data is popped from receive FIFO.</description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+              <access>read-only</access>
+              <enumeratedValues derivedFrom="InterruptState" />
+            </field>
+            <field>
+              <name>transmit_fifo_ready_state</name>
+              <description>Transmit FIFO ready interrupt state\n\n
+Auto cleared when data is pushed into transmit FIFO.</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <access>read-only</access>
+              <enumeratedValues derivedFrom="InterruptState" />
+            </field>
+            <field>
+              <name>transfer_end_state</name>
+              <description>Transfer ended interrupt state</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <access>read-only</access>
+              <enumeratedValues derivedFrom="InterruptState" />
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>sub_address</name>
+          <description>Register address of slave device</description>
+          <addressOffset>0x08</addressOffset>
+          <resetValue>0x00000000</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <fields>
+            <field>
+              <dim>4</dim>
+              <dimIncrement>8</dimIncrement>
+              <name>byte[%s]</name>
+              <description>I2C sub-address byte %s</description>
+              <lsb>0</lsb>
+              <msb>7</msb>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>bus_busy</name>
+          <description>Bus busy state indicator</description>
+          <addressOffset>0x0C</addressOffset>
+          <resetValue>0x00000000</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <writeConstraint>
+            <useEnumeratedValues>true</useEnumeratedValues>
+          </writeConstraint>
+          <fields>
+            <field>
+              <name>force_clear</name>
+              <description>Force clear I2C bus busy state\n\n
+Not for normal use; only use when I2C bus hangs</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <access>write-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>clear</name>
+                  <description>Write 1 to force clear busy flag</description>
+                  <value>0x1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>busy</name>
+              <description>Indicator to I2C bus busy signal</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>busy</name>
+                  <description>Bus is busy</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>idle</name>
+                  <description>Bus is not busy</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>period_start</name>
+          <description>Duration of start phase</description>
+          <addressOffset>0x10</addressOffset>
+          <resetValue>0x0f0f0f0f</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <fields>
+            <field>
+              <dim>4</dim>
+              <dimIncrement>8</dimIncrement>
+              <name>phase[%s]</name>
+              <description>Length of start condition phase %s</description>
+              <lsb>0</lsb>
+              <msb>7</msb>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>period_stop</name>
+          <description>Duration of stop phase</description>
+          <addressOffset>0x14</addressOffset>
+          <resetValue>0x0f0f0f0f</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <fields>
+            <field>
+              <dim>4</dim>
+              <dimIncrement>8</dimIncrement>
+              <name>phase[%s]</name>
+              <description>Length of stop condition phase %s</description>
+              <lsb>0</lsb>
+              <msb>7</msb>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>period_data</name>
+          <description>Duration of data phase</description>
+          <addressOffset>0x18</addressOffset>
+          <resetValue>0x0f0f0f0f</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <fields>
+            <field>
+              <dim>4</dim>
+              <dimIncrement>8</dimIncrement>
+              <name>phase[%s]</name>
+              <description>Length of data condition phase %s</description>
+              <lsb>0</lsb>
+              <msb>7</msb>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>fifo_config_0</name>
+          <description>FIFO configuration register 0</description>
+          <addressOffset>0x80</addressOffset>
+          <resetValue>0x00000000</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <writeConstraint>
+            <useEnumeratedValues>true</useEnumeratedValues>
+          </writeConstraint>
+          <fields>
+            <field>
+              <name>receive_underflow</name>
+              <description>Receive FIFO underflow flag\n\n
+Can be cleared using `receive_clear`.</description>
+              <lsb>7</lsb>
+              <msb>7</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <name>HasUnderflow</name>
+                <enumeratedValue>
+                  <name>not_underflow</name>
+                  <description>No FIFO buffer underflow</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>underflow</name>
+                  <description>Has FIFO buffer underflow</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>receive_overflow</name>
+              <description>Receive FIFO overflow flag\n\n
+Can be cleared using `receive_clear`.</description>
+              <lsb>6</lsb>
+              <msb>6</msb>
+              <access>read-only</access>
+              <enumeratedValues>
+                <name>HasOverflow</name>
+                <enumeratedValue>
+                  <name>not_overflow</name>
+                  <description>No FIFO buffer overflow</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>overflow</name>
+                  <description>Has FIFO buffer overflow</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>transmit_underflow</name>
+              <description>Transmit FIFO underflow flag\n\n
+Can be cleared using `transmit_clear`.</description>
+              <lsb>5</lsb>
+              <msb>5</msb>
+              <access>read-only</access>
+              <enumeratedValues derivedFrom="HasUnderflow" />
+            </field>
+            <field>
+              <name>transmit_overflow</name>
+              <description>Transmit FIFO overflow flag\n\n
+Can be cleared using `transmit_clear`.</description>
+              <lsb>4</lsb>
+              <msb>4</msb>
+              <access>read-only</access>
+              <enumeratedValues derivedFrom="HasOverflow" />
+            </field>
+            <field>
+              <name>receive_clear</name>
+              <description>Clears receive FIFO overflow and underflow flags</description>
+              <lsb>3</lsb>
+              <msb>3</msb>
+              <access>write-only</access>
+              <enumeratedValues>
+                <name>FlagClear</name>
+                <enumeratedValue>
+                  <name>clear</name>
+                  <description>Write 1 to clear fifo flags</description>
+                  <value>0x1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>transmit_clear</name>
+              <description>Clears transmit FIFO overflow and underflow flags</description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+              <access>write-only</access>
+              <enumeratedValues derivedFrom="FlagClear" />
+            </field>
+            <field>
+              <name>receive_dma</name>
+              <description>Enable signal of receive DMA interface</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <enumeratedValues>
+                <name>DmaEnable</name>
+                <enumeratedValue>
+                  <name>enable</name>
+                  <description>Enable DMA interface</description>
+                  <value>0x1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>disable</name>
+                  <description>Disable DMA interface</description>
+                  <value>0x0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>transmit_dma</name>
+              <description>Enable signal of transmit DMA interface</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <enumeratedValues derivedFrom="DmaEnable" />
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>fifo_config_1</name>
+          <description>FIFO configuration register 1</description>
+          <addressOffset>0x84</addressOffset>
+          <resetValue>0x00000002</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <fields>
+            <field>
+              <name>receive_threshold</name>
+              <description>Receive FIFO threshold\n\n
+DMA request will not be asserted if `receive_available` is less than this value</description>
+              <lsb>24</lsb>
+              <msb>24</msb>
+            </field>
+            <field>
+              <name>transmit_threshold</name>
+              <description>Transmit FIFO threshold\n\n
+DMA request will not be asserted if `transmit_available` is less than this value</description>
+              <lsb>16</lsb>
+              <msb>16</msb>
+            </field>
+            <field>
+              <name>receive_count</name>
+              <description>Count of available data in receive FIFO</description>
+              <lsb>8</lsb>
+              <msb>9</msb>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>transmit_count</name>
+              <description>Count of available data in transmit FIFO</description>
+              <lsb>0</lsb>
+              <msb>1</msb>
+              <access>read-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>data_write</name>
+          <description>FIFO write data register</description>
+          <addressOffset>0x88</addressOffset>
+          <resetValue>0x00000000</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <access>write-only</access>
+          <fields>
+            <field>
+              <name>value</name>
+              <description>Write data to FIFO</description>
+              <lsb>0</lsb>
+              <msb>7</msb>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>data_read</name>
+          <description>FIFO read data register</description>
+          <addressOffset>0x8C</addressOffset>
+          <resetValue>0x00000000</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <access>read-only</access>
+          <fields>
+            <field>
+              <name>value</name>
+              <description>Read data from FIFO</description>
+              <lsb>0</lsb>
+              <msb>7</msb>
+            </field>
           </fields>
         </register>
       </registers>

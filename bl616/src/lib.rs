@@ -33,7 +33,7 @@ pub union Vector {
 #[doc(hidden)]
 #[no_mangle]
 pub static __EXTERNAL_INTERRUPTS: [Vector; 0] = [];
-#[doc = "Global register"]
+#[doc = "Global configuration register"]
 pub struct GLB {
     _marker: PhantomData<*const ()>,
 }
@@ -59,8 +59,200 @@ impl core::fmt::Debug for GLB {
         f.debug_struct("GLB").finish()
     }
 }
-#[doc = "Global register"]
+#[doc = "Global configuration register"]
 pub mod glb;
+#[doc = "Generic DAC, ADC and ACOMP interface control"]
+pub struct GPIP {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for GPIP {}
+impl GPIP {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const gpip::RegisterBlock = 0x2000_2000 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const gpip::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for GPIP {
+    type Target = gpip::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for GPIP {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("GPIP").finish()
+    }
+}
+#[doc = "Generic DAC, ADC and ACOMP interface control"]
+pub mod gpip;
+#[doc = "Secure Engine"]
+pub struct SEC {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for SEC {}
+impl SEC {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const sec::RegisterBlock = 0x2000_4000 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const sec::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for SEC {
+    type Target = sec::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for SEC {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("SEC").finish()
+    }
+}
+#[doc = "Secure Engine"]
+pub mod sec;
+#[doc = "Universal Asynchronous Receiver Transmitter"]
+pub struct UART0 {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for UART0 {}
+impl UART0 {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const uart::RegisterBlock = 0x2000_a000 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const uart::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for UART0 {
+    type Target = uart::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for UART0 {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("UART0").finish()
+    }
+}
+#[doc = "Universal Asynchronous Receiver Transmitter"]
+pub struct UART1 {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for UART1 {}
+impl UART1 {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const uart::RegisterBlock = 0x2000_a100 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const uart::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for UART1 {
+    type Target = uart::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for UART1 {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("UART1").finish()
+    }
+}
+#[doc = "Universal Asynchronous Receiver Transmitter"]
+pub mod uart;
+#[doc = "Serial Peripheral Interface"]
+pub struct SPI0 {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for SPI0 {}
+impl SPI0 {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const spi::RegisterBlock = 0x2000_a200 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const spi::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for SPI0 {
+    type Target = spi::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for SPI0 {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("SPI0").finish()
+    }
+}
+#[doc = "Serial Peripheral Interface"]
+pub mod spi;
+#[doc = "Inter-Integrated Circuit bus"]
+pub struct I2C0 {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for I2C0 {}
+impl I2C0 {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const i2c::RegisterBlock = 0x2000_a300 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const i2c::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for I2C0 {
+    type Target = i2c::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for I2C0 {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("I2C0").finish()
+    }
+}
+#[doc = "Inter-Integrated Circuit bus"]
+pub struct I2C1 {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for I2C1 {}
+impl I2C1 {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const i2c::RegisterBlock = 0x2000_a900 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const i2c::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for I2C1 {
+    type Target = i2c::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for I2C1 {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("I2C1").finish()
+    }
+}
+#[doc = "Inter-Integrated Circuit bus"]
+pub mod i2c;
 #[no_mangle]
 static mut DEVICE_PERIPHERALS: bool = false;
 #[doc = r" All the peripherals."]
@@ -68,6 +260,20 @@ static mut DEVICE_PERIPHERALS: bool = false;
 pub struct Peripherals {
     #[doc = "GLB"]
     pub GLB: GLB,
+    #[doc = "GPIP"]
+    pub GPIP: GPIP,
+    #[doc = "SEC"]
+    pub SEC: SEC,
+    #[doc = "UART0"]
+    pub UART0: UART0,
+    #[doc = "UART1"]
+    pub UART1: UART1,
+    #[doc = "SPI0"]
+    pub SPI0: SPI0,
+    #[doc = "I2C0"]
+    pub I2C0: I2C0,
+    #[doc = "I2C1"]
+    pub I2C1: I2C1,
 }
 impl Peripherals {
     #[doc = r" Returns all the peripherals *once*."]
@@ -91,6 +297,27 @@ impl Peripherals {
         DEVICE_PERIPHERALS = true;
         Peripherals {
             GLB: GLB {
+                _marker: PhantomData,
+            },
+            GPIP: GPIP {
+                _marker: PhantomData,
+            },
+            SEC: SEC {
+                _marker: PhantomData,
+            },
+            UART0: UART0 {
+                _marker: PhantomData,
+            },
+            UART1: UART1 {
+                _marker: PhantomData,
+            },
+            SPI0: SPI0 {
+                _marker: PhantomData,
+            },
+            I2C0: I2C0 {
+                _marker: PhantomData,
+            },
+            I2C1: I2C1 {
                 _marker: PhantomData,
             },
         }
