@@ -89,6 +89,34 @@ impl core::fmt::Debug for GPIP {
 }
 #[doc = "Generic DAC, ADC and ACOMP interface control"]
 pub mod gpip;
+#[doc = "Automatic Gain Control"]
+pub struct AGC {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for AGC {}
+impl AGC {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const agc::RegisterBlock = 0x2000_2c00 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const agc::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for AGC {
+    type Target = agc::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for AGC {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("AGC").finish()
+    }
+}
+#[doc = "Automatic Gain Control"]
+pub mod agc;
 #[doc = "Secure Engine"]
 pub struct SEC {
     _marker: PhantomData<*const ()>,
@@ -337,6 +365,34 @@ impl core::fmt::Debug for IR {
 }
 #[doc = "Infrared receiver module"]
 pub mod ir;
+#[doc = "ISO 11898 communication protocol"]
+pub struct ISO11898 {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for ISO11898 {}
+impl ISO11898 {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const iso11898::RegisterBlock = 0x2000_aa00 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const iso11898::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for ISO11898 {
+    type Target = iso11898::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for ISO11898 {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("ISO11898").finish()
+    }
+}
+#[doc = "ISO 11898 communication protocol"]
+pub mod iso11898;
 #[doc = "Inter-IC Sound controller"]
 pub struct I2S {
     _marker: PhantomData<*const ()>,
@@ -477,6 +533,34 @@ impl core::fmt::Debug for HBN {
 }
 #[doc = "Hibernate (Deep sleep) control"]
 pub mod hbn;
+#[doc = "Pseudo Static Random Access Memory control"]
+pub struct PSRAM {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for PSRAM {}
+impl PSRAM {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const psram::RegisterBlock = 0x2005_2000 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const psram::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for PSRAM {
+    type Target = psram::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for PSRAM {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("PSRAM").finish()
+    }
+}
+#[doc = "Pseudo Static Random Access Memory control"]
+pub mod psram;
 #[doc = "Audio Pulse-Width Modulation controller"]
 pub struct APWM {
     _marker: PhantomData<*const ()>,
@@ -654,6 +738,8 @@ pub struct Peripherals {
     pub GLB: GLB,
     #[doc = "GPIP"]
     pub GPIP: GPIP,
+    #[doc = "AGC"]
+    pub AGC: AGC,
     #[doc = "SEC"]
     pub SEC: SEC,
     #[doc = "UART0"]
@@ -672,6 +758,8 @@ pub struct Peripherals {
     pub TIMER: TIMER,
     #[doc = "IR"]
     pub IR: IR,
+    #[doc = "ISO11898"]
+    pub ISO11898: ISO11898,
     #[doc = "I2S"]
     pub I2S: I2S,
     #[doc = "AADC"]
@@ -682,6 +770,8 @@ pub struct Peripherals {
     pub PDS: PDS,
     #[doc = "HBN"]
     pub HBN: HBN,
+    #[doc = "PSRAM"]
+    pub PSRAM: PSRAM,
     #[doc = "APWM"]
     pub APWM: APWM,
     #[doc = "EFUSE"]
@@ -722,6 +812,9 @@ impl Peripherals {
             GPIP: GPIP {
                 _marker: PhantomData,
             },
+            AGC: AGC {
+                _marker: PhantomData,
+            },
             SEC: SEC {
                 _marker: PhantomData,
             },
@@ -749,6 +842,9 @@ impl Peripherals {
             IR: IR {
                 _marker: PhantomData,
             },
+            ISO11898: ISO11898 {
+                _marker: PhantomData,
+            },
             I2S: I2S {
                 _marker: PhantomData,
             },
@@ -762,6 +858,9 @@ impl Peripherals {
                 _marker: PhantomData,
             },
             HBN: HBN {
+                _marker: PhantomData,
+            },
+            PSRAM: PSRAM {
                 _marker: PhantomData,
             },
             APWM: APWM {

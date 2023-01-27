@@ -382,6 +382,7 @@ When sets and clears at the same, only set will take effect.</description>
         </register>
       </registers>
     </peripheral>
+    <!-- todo: MIX: 0x20001000? -->
     <peripheral>
       <name>GPIP</name>
       <description>Generic DAC, ADC and ACOMP interface control</description>
@@ -402,6 +403,28 @@ When sets and clears at the same, only set will take effect.</description>
         </register>
       </registers>
     </peripheral>
+    <!-- todo: PHY_BASE = 0x20002800? -->
+    <peripheral>
+      <name>AGC</name>
+      <description>Automatic Gain Control</description>
+      <baseAddress>0x20002C00</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x1000</size> <!-- todo -->
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>todo</name>
+          <description>??</description>
+          <addressOffset>0</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <!-- todo: SEC_DBG = 0x20003000? -->
     <peripheral>
       <name>SEC</name>
       <description>Secure Engine</description>
@@ -422,6 +445,8 @@ When sets and clears at the same, only set will take effect.</description>
         </register>
       </registers>
     </peripheral>
+    <!-- todo: TRUST_S = 0x20005000? -->
+    <!-- todo: TRUST_NS = 0x20006000? -->
     <peripheral>
       <dim>2</dim>
       <dimIncrement>0x100</dimIncrement>
@@ -3197,6 +3222,28 @@ DMA request will not be asserted if `transmit_available` is less than this value
         </register>
       </registers>
     </peripheral>
+    <!-- todo: CKS = 0x2000A700? -->
+    <!-- todo: DBI = 0x2000A800? -->
+    <peripheral>
+      <name>ISO11898</name>
+      <description>ISO 11898 communication protocol</description>
+      <baseAddress>0x2000AA00</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x100</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>todo</name>
+          <description>??</description>
+          <addressOffset>0</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
     <peripheral>
       <name>I2S</name>
       <description>Inter-IC Sound controller</description>
@@ -3520,6 +3567,8 @@ DMA request will not be asserted if `transmit_available` is less than this value
         </register>
       </registers>
     </peripheral>
+    <!-- todo: DMA = 0x2000C000 -->
+    <!-- todo: SDU = 0x2000D000 -->
     <peripheral>
       <name>PDS</name>
       <description>Power-Down Sleep control</description>
@@ -3751,6 +3800,27 @@ DMA request will not be asserted if `transmit_available` is less than this value
         </register>
       </registers>
     </peripheral>
+    <!-- todo: MM_MISC = 0x20050000 -->
+    <peripheral>
+      <name>PSRAM</name>
+      <description>Pseudo Static Random Access Memory control</description>
+      <baseAddress>0x20052000</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x100</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>todo</name>
+          <description>??</description>
+          <addressOffset>0</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
     <peripheral>
       <name>APWM</name>
       <description>Audio Pulse-Width Modulation controller</description>
@@ -3791,6 +3861,8 @@ DMA request will not be asserted if `transmit_available` is less than this value
         </register>
       </registers>
     </peripheral>
+    <!-- todo: dvp0 = 0x20057000 -->
+    <!-- todo: dvp1 = 0x20058000 -->
     <peripheral>
       <name>MJPEG</name>
       <description>Motion JPEG encoder</description>
