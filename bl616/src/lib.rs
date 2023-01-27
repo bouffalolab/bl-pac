@@ -253,6 +253,174 @@ impl core::fmt::Debug for I2C1 {
 }
 #[doc = "Inter-Integrated Circuit bus"]
 pub mod i2c;
+#[doc = "Inter-IC Sound controller"]
+pub struct I2S {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for I2S {}
+impl I2S {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const i2s::RegisterBlock = 0x2000_ab00 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const i2s::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for I2S {
+    type Target = i2s::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for I2S {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("I2S").finish()
+    }
+}
+#[doc = "Inter-IC Sound controller"]
+pub mod i2s;
+#[doc = "Quad Serial Flash control"]
+pub struct FLASH {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for FLASH {}
+impl FLASH {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const flash::RegisterBlock = 0x2000_b000 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const flash::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for FLASH {
+    type Target = flash::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for FLASH {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("FLASH").finish()
+    }
+}
+#[doc = "Quad Serial Flash control"]
+pub mod flash;
+#[doc = "Motion JPEG encoder"]
+pub struct MJPEG {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for MJPEG {}
+impl MJPEG {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const mjpeg::RegisterBlock = 0x2005_9000 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const mjpeg::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for MJPEG {
+    type Target = mjpeg::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for MJPEG {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("MJPEG").finish()
+    }
+}
+#[doc = "Motion JPEG encoder"]
+pub mod mjpeg;
+#[doc = "Secure Digital host control"]
+pub struct SDH {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for SDH {}
+impl SDH {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const sdh::RegisterBlock = 0x2006_0000 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const sdh::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for SDH {
+    type Target = sdh::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for SDH {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("SDH").finish()
+    }
+}
+#[doc = "Secure Digital host control"]
+pub mod sdh;
+#[doc = "Ethernet Media Access Control"]
+pub struct EMAC {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for EMAC {}
+impl EMAC {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const emac::RegisterBlock = 0x2007_0000 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const emac::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for EMAC {
+    type Target = emac::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for EMAC {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("EMAC").finish()
+    }
+}
+#[doc = "Ethernet Media Access Control"]
+pub mod emac;
+#[doc = "Universal Serial Bus host"]
+pub struct USB {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for USB {}
+impl USB {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const usb::RegisterBlock = 0x2007_2000 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const usb::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for USB {
+    type Target = usb::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for USB {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("USB").finish()
+    }
+}
+#[doc = "Universal Serial Bus host"]
+pub mod usb;
 #[no_mangle]
 static mut DEVICE_PERIPHERALS: bool = false;
 #[doc = r" All the peripherals."]
@@ -274,6 +442,18 @@ pub struct Peripherals {
     pub I2C0: I2C0,
     #[doc = "I2C1"]
     pub I2C1: I2C1,
+    #[doc = "I2S"]
+    pub I2S: I2S,
+    #[doc = "FLASH"]
+    pub FLASH: FLASH,
+    #[doc = "MJPEG"]
+    pub MJPEG: MJPEG,
+    #[doc = "SDH"]
+    pub SDH: SDH,
+    #[doc = "EMAC"]
+    pub EMAC: EMAC,
+    #[doc = "USB"]
+    pub USB: USB,
 }
 impl Peripherals {
     #[doc = r" Returns all the peripherals *once*."]
@@ -318,6 +498,24 @@ impl Peripherals {
                 _marker: PhantomData,
             },
             I2C1: I2C1 {
+                _marker: PhantomData,
+            },
+            I2S: I2S {
+                _marker: PhantomData,
+            },
+            FLASH: FLASH {
+                _marker: PhantomData,
+            },
+            MJPEG: MJPEG {
+                _marker: PhantomData,
+            },
+            SDH: SDH {
+                _marker: PhantomData,
+            },
+            EMAC: EMAC {
+                _marker: PhantomData,
+            },
+            USB: USB {
                 _marker: PhantomData,
             },
         }

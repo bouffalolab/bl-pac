@@ -7,7 +7,7 @@
   <version>1.0</version>
   <description>Bouffalo BL616 chip</description>
   <licenseText>
-Copyright (c) 202=3 Bouffalo Lab
+Copyright (c) 2023 Bouffalo Lab
 bl808-pac is licensed under Mulan PSL v2.
 You can use this software according to the terms and conditions of the Mulan PSL v2.
 You may obtain a copy of Mulan PSL v2 at:
@@ -23,7 +23,7 @@ See the Mulan PSL v2 for more details.
   <access>read-write</access>
   <resetValue>0x00000000</resetValue>
   <resetMask>0xFFFFFFFF</resetMask>
-  
+
   <peripherals>
     <peripheral>
       <name>GLB</name>
@@ -2265,6 +2265,672 @@ DMA request will not be asserted if `transmit_available` is less than this value
             </field>
           </fields>
         </register>
+      </registers>
+    </peripheral>
+
+    <peripheral>
+      <name>I2S</name>
+      <description>Inter-IC Sound controller</description>
+      <baseAddress>0x2000AB00</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x100</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>config</name>
+          <description>Function configuration register</description>
+          <addressOffset>0x00</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>interrupt_state</name>
+          <description>Interrupt enables, masks and states</description>
+          <addressOffset>0x04</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>base_clock</name>
+          <description>Base clock divider</description>
+          <addressOffset>0x10</addressOffset>
+          <resetValue>0x00010001</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <fields>
+            <field>
+              <name>divide_high</name>
+              <description>Higher half of base clock dividing factor</description>
+              <lsb>16</lsb>
+              <msb>27</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>divide_low</name>
+              <description>Lower half of base clock dividing factor</description>
+              <lsb>0</lsb>
+              <msb>11</msb>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>fifo_config_0</name>
+          <description>FIFO configuration register 0</description>
+          <addressOffset>0x80</addressOffset>
+          <resetValue>0x00000000</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <fields>
+            <field>
+              <name>left_justified</name> <!-- todo proper name -->
+              <description></description>
+              <lsb>10</lsb>
+              <msb>10</msb>
+              <!-- todo access, writeConstraint, values-->
+            </field>
+            <field>
+              <name>swap_left_right</name>
+              <description></description>
+              <lsb>9</lsb>
+              <msb>9</msb>
+              <!-- todo access, writeConstraint, values-->
+            </field>
+            <field>
+              <name>merge_left_right</name>
+              <description></description>
+              <lsb>8</lsb>
+              <msb>8</msb>
+              <!-- todo access, writeConstraint, values-->
+            </field>
+            <field>
+              <name>receive_underflow</name>
+              <description>Receive FIFO underflow flag\n\n
+Can be cleared using `receive_clear`.</description>
+              <lsb>7</lsb>
+              <msb>7</msb>
+              <access>read-only</access>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <name>HasUnderflow</name>
+                <enumeratedValue>
+                  <name>not_underflow</name>
+                  <description>No FIFO buffer underflow</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>underflow</name>
+                  <description>Has FIFO buffer underflow</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>receive_overflow</name>
+              <description>Receive FIFO overflow flag\n\n
+Can be cleared using `receive_clear`.</description>
+              <lsb>6</lsb>
+              <msb>6</msb>
+              <access>read-only</access>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <name>HasOverflow</name>
+                <enumeratedValue>
+                  <name>not_overflow</name>
+                  <description>No FIFO buffer overflow</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>overflow</name>
+                  <description>Has FIFO buffer overflow</description>
+                  <value>1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>transmit_underflow</name>
+              <description>Transmit FIFO underflow flag\n\n
+Can be cleared using `transmit_clear`.</description>
+              <lsb>5</lsb>
+              <msb>5</msb>
+              <access>read-only</access>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues derivedFrom="HasUnderflow" />
+            </field>
+            <field>
+              <name>transmit_overflow</name>
+              <description>Transmit FIFO overflow flag\n\n
+Can be cleared using `transmit_clear`.</description>
+              <lsb>4</lsb>
+              <msb>4</msb>
+              <access>read-only</access>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues derivedFrom="HasOverflow" />
+            </field>
+            <field>
+              <name>receive_clear</name>
+              <description>Clears receive FIFO overflow and underflow flags</description>
+              <lsb>3</lsb>
+              <msb>3</msb>
+              <access>write-only</access>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <name>FlagClear</name>
+                <enumeratedValue>
+                  <name>clear</name>
+                  <description>Write 1 to clear fifo flags</description>
+                  <value>0x1</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>transmit_clear</name>
+              <description>Clears transmit FIFO overflow and underflow flags</description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+              <access>write-only</access>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues derivedFrom="FlagClear" />
+            </field>
+            <field>
+              <name>receive_dma</name>
+              <description>Enable signal of receive DMA interface</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues>
+                <name>DmaEnable</name>
+                <enumeratedValue>
+                  <name>enable</name>
+                  <description>Enable DMA interface</description>
+                  <value>0x1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>disable</name>
+                  <description>Disable DMA interface</description>
+                  <value>0x0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>transmit_dma</name>
+              <description>Enable signal of transmit DMA interface</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <writeConstraint>
+                <useEnumeratedValues>true</useEnumeratedValues>
+              </writeConstraint>
+              <enumeratedValues derivedFrom="DmaEnable" />
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>fifo_config_1</name>
+          <description>FIFO configuration register 1</description>
+          <addressOffset>0x84</addressOffset>
+          <resetValue>0x00000010</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <fields>
+            <field>
+              <name>receive_threshold</name>
+              <description>Receive FIFO threshold\n\n
+DMA request will not be asserted if `receive_available` is less than this value</description>
+              <lsb>24</lsb>
+              <msb>27</msb>
+            </field>
+            <field>
+              <name>transmit_threshold</name>
+              <description>Transmit FIFO threshold\n\n
+DMA request will not be asserted if `transmit_available` is less than this value</description>
+              <lsb>16</lsb>
+              <msb>19</msb>
+            </field>
+            <field>
+              <name>receive_count</name>
+              <description>Count of available data in receive FIFO</description>
+              <lsb>8</lsb>
+              <msb>12</msb>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>transmit_count</name>
+              <description>Count of available data in transmit FIFO</description>
+              <lsb>0</lsb>
+              <msb>4</msb>
+              <access>read-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>data_write</name>
+          <description>FIFO write data register</description>
+          <addressOffset>0x88</addressOffset>
+          <resetValue>0x00000000</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <access>write-only</access>
+          <fields>
+            <field>
+              <name>value</name>
+              <description>Write data to FIFO</description>
+              <lsb>0</lsb>
+              <msb>7</msb>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>data_read</name>
+          <description>FIFO read data register</description>
+          <addressOffset>0x8C</addressOffset>
+          <resetValue>0x00000000</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <access>read-only</access>
+          <fields>
+            <field>
+              <name>value</name>
+              <description>Read data from FIFO</description>
+              <lsb>0</lsb>
+              <msb>7</msb>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>FLASH</name>
+      <description>Quad Serial Flash control</description>
+      <baseAddress>0x2000B000</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x100</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>todo</name>
+          <description>??</description>
+          <addressOffset>0</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>MJPEG</name>
+      <description>Motion JPEG encoder</description>
+      <baseAddress>0x20059000</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x1000</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>todo</name>
+          <description>??</description>
+          <addressOffset>0</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>SDH</name>
+      <description>Secure Digital host control</description>
+      <baseAddress>0x20060000</baseAddress>
+      <!-- todo: sdk shows this peripheral is written by 16-bit register, confirm this -->
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x1000</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>todo</name>
+          <description>??</description>
+          <addressOffset>0</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>EMAC</name>
+      <description>Ethernet Media Access Control</description>
+      <baseAddress>0x20070000</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x1000</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>mode</name>
+          <description>Interface enables and configurations</description>
+          <addressOffset>0x00</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>interrupt_source</name>
+          <description>Interrupt source register</description>
+          <addressOffset>0x04</addressOffset>
+          <resetValue>0x00000000</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <access>read-write</access>
+          <!-- todo: don't generate write functions if defined like oneToClear -->
+          <modifiedWriteValues>oneToClear</modifiedWriteValues>
+          <fields>
+            <field>
+              <name>control_receive</name>
+              <description>Control frame received interrupt state</description>
+              <lsb>6</lsb>
+              <msb>6</msb>
+              <enumeratedValues>
+                <name>InterruptState</name>
+                <enumeratedValue>
+                  <name>has_interrupt</name>
+                  <description>Has interrupt</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>no_interrupt</name>
+                  <description>No interrupt occurred</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>control_transmit</name>
+              <description>Control frame transmitted interrupt state</description>
+              <lsb>5</lsb>
+              <msb>5</msb>
+              <enumeratedValues derivedFrom="InterruptState" />
+            </field>
+            <field>
+              <name>busy</name>
+              <description>Lack of buffer interrupt state</description>
+              <lsb>4</lsb>
+              <msb>4</msb>
+              <enumeratedValues derivedFrom="InterruptState" />
+            </field>
+            <field>
+              <name>receive_error</name>
+              <description>Receive error interrupt state</description>
+              <lsb>3</lsb>
+              <msb>3</msb>
+              <enumeratedValues derivedFrom="InterruptState" />
+            </field>
+            <field>
+              <name>frame_received</name>
+              <description>Frame received interrupt state</description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+              <enumeratedValues derivedFrom="InterruptState" />
+            </field>
+            <field>
+              <name>transmit_error</name>
+              <description>Transmit error interrupt state</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <enumeratedValues derivedFrom="InterruptState" />
+            </field>
+            <field>
+              <name>buffer_transmitted</name>
+              <description>Buffer transmitted interrupt state</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <enumeratedValues derivedFrom="InterruptState" />
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>interrupt_mask</name>
+          <description>Interrupt mask register</description>
+          <addressOffset>0x08</addressOffset>
+          <resetValue>0x00000000</resetValue>
+          <resetMask>0xffffffff</resetMask>
+          <access>read-write</access>
+          <writeConstraint>
+            <useEnumeratedValues>true</useEnumeratedValues>
+          </writeConstraint>
+          <fields>
+            <field>
+              <name>control_receive</name>
+              <description>Control frame received interrupt mask</description>
+              <lsb>6</lsb>
+              <msb>6</msb>
+              <enumeratedValues>
+                <name>InterruptMask</name>
+                <enumeratedValue>
+                  <name>mask</name>
+                  <description>Mask interrupt</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>unmask</name>
+                  <description>Unmask interrupt</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>control_transmit</name>
+              <description>Control frame transmitted interrupt mask</description>
+              <lsb>5</lsb>
+              <msb>5</msb>
+              <enumeratedValues derivedFrom="InterruptMask" />
+            </field>
+            <field>
+              <name>busy</name>
+              <description>Lack of buffer interrupt mask</description>
+              <lsb>4</lsb>
+              <msb>4</msb>
+              <enumeratedValues derivedFrom="InterruptMask" />
+            </field>
+            <field>
+              <name>receive_error</name>
+              <description>Receive error interrupt mask</description>
+              <lsb>3</lsb>
+              <msb>3</msb>
+              <enumeratedValues derivedFrom="InterruptMask" />
+            </field>
+            <field>
+              <name>frame_received</name>
+              <description>Frame received interrupt mask</description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+              <enumeratedValues derivedFrom="InterruptMask" />
+            </field>
+            <field>
+              <name>transmit_error</name>
+              <description>Transmit error interrupt mask</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <enumeratedValues derivedFrom="InterruptMask" />
+            </field>
+            <field>
+              <name>buffer_transmitted</name>
+              <description>Buffer transmitted interrupt mask</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <enumeratedValues derivedFrom="InterruptMask" />
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>backed_gap</name>
+          <description>Back-to-back inter-packet gap register</description>
+          <addressOffset>0x0C</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>non_backed_gap_1</name>
+          <description>Non back-to-back inter-packet gap register 1</description>
+          <addressOffset>0x10</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>non_backed_gap_2</name>
+          <description>Non back-to-back inter-packet gap register 2</description>
+          <addressOffset>0x14</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>frame_length</name>
+          <description>Minimum and maximum ethernet frame length</description>
+          <addressOffset>0x18</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>collision</name>
+          <description>Collision time window and maximum retries</description>
+          <addressOffset>0x1C</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>transmit_buffer</name>
+          <description>Transmit buffer descriptor</description>
+          <addressOffset>0x20</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>flow_control</name>
+          <description>Control frame function register</description>
+          <addressOffset>0x24</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>mii_mode</name>
+          <description>MII clock divider and premable enable</description>
+          <addressOffset>0x28</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>mii_command</name>
+          <description>MII control data, read and scan state</description>
+          <addressOffset>0x2C</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>mii_address</name>
+          <description>Physical layer bus address</description>
+          <addressOffset>0x30</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>control_write</name>
+          <description>Write data to MII physcial layer</description>
+          <addressOffset>0x34</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>control_read</name>
+          <description>Read data from MII physcial layer</description>
+          <addressOffset>0x38</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>mii_state</name>
+          <description>MII bus and link layer state</description>
+          <addressOffset>0x3C</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <dim>2</dim>
+          <dimIncrement>0x04</dimIncrement>
+          <name>mac_address[%s]</name>
+          <description>Media Access Control address</description>
+          <addressOffset>0x40</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <dim>2</dim>
+          <dimIncrement>0x04</dimIncrement>
+          <name>hash[%s]</name>
+          <description>Hash register</description>
+          <addressOffset>0x48</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>transmit_control</name>
+          <description>Transmit control register</description>
+          <addressOffset>0x50</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>USB</name>
+      <description>Universal Serial Bus host</description>
+      <baseAddress>0x20072000</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x1000</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <cluster>
+          <name>capability</name>
+          <description>Host Controller Capability Registers</description>
+          <addressOffset>0x000</addressOffset>
+        </cluster>
+        <cluster>
+          <name>operation</name>
+          <description>Host Controller Operational Registers</description>
+          <addressOffset>0x010</addressOffset>
+        </cluster>
       </registers>
     </peripheral>
   </peripherals>
