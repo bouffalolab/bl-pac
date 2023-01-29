@@ -117,7 +117,7 @@ impl core::fmt::Debug for AGC {
 }
 #[doc = "Automatic Gain Control"]
 pub mod agc;
-#[doc = "Secure Engine"]
+#[doc = "Digest, Encryption and Signing accelerator"]
 pub struct SEC {
     _marker: PhantomData<*const ()>,
 }
@@ -143,7 +143,7 @@ impl core::fmt::Debug for SEC {
         f.debug_struct("SEC").finish()
     }
 }
-#[doc = "Secure Engine"]
+#[doc = "Digest, Encryption and Signing accelerator"]
 pub mod sec;
 #[doc = "Universal Asynchronous Receiver Transmitter"]
 pub struct UART0 {

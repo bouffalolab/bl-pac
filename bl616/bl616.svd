@@ -1015,7 +1015,7 @@ When sets and clears at the same, only set will take effect.</description>
     <!-- todo: SEC_DBG = 0x20003000? -->
     <peripheral>
       <name>SEC</name>
-      <description>Secure Engine</description>
+      <description>Digest, Encryption and Signing accelerator</description>
       <baseAddress>0x20004000</baseAddress>
       <addressBlock>
         <offset>0</offset>

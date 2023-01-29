@@ -4375,7 +4375,7 @@ DMA request will not be asserted if `transmit_available` is less than this value
     <!-- todo: TRUST_S = 0x20005000? -->
     <peripheral>
       <name>SEC</name>
-      <description>Secure Engine</description>
+      <description>Digest, Encryption and Signing accelerator</description>
       <baseAddress>0x20004000</baseAddress>
       <addressBlock>
         <offset>0</offset>

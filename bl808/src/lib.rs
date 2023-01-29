@@ -979,7 +979,7 @@ impl core::fmt::Debug for EFUSE {
 }
 #[doc = "eFuse memory control"]
 pub mod efuse;
-#[doc = "Secure Engine"]
+#[doc = "Digest, Encryption and Signing accelerator"]
 pub struct SEC {
     _marker: PhantomData<*const ()>,
 }
@@ -1005,7 +1005,7 @@ impl core::fmt::Debug for SEC {
         f.debug_struct("SEC").finish()
     }
 }
-#[doc = "Secure Engine"]
+#[doc = "Digest, Encryption and Signing accelerator"]
 pub mod sec;
 #[doc = "Secure debug configuration"]
 pub struct DEBUG {
