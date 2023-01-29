@@ -145,6 +145,34 @@ impl core::fmt::Debug for SEC {
 }
 #[doc = "Digest, Encryption and Signing accelerator"]
 pub mod sec;
+#[doc = "Peripheral and memory access permission"]
+pub struct PERMIT {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for PERMIT {}
+impl PERMIT {
+    #[doc = r"Pointer to the register block"]
+    pub const PTR: *const permit::RegisterBlock = 0x2000_5000 as *const _;
+    #[doc = r"Return the pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const permit::RegisterBlock {
+        Self::PTR
+    }
+}
+impl Deref for PERMIT {
+    type Target = permit::RegisterBlock;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*Self::PTR }
+    }
+}
+impl core::fmt::Debug for PERMIT {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("PERMIT").finish()
+    }
+}
+#[doc = "Peripheral and memory access permission"]
+pub mod permit;
 #[doc = "Universal Asynchronous Receiver Transmitter"]
 pub struct UART0 {
     _marker: PhantomData<*const ()>,
@@ -882,6 +910,8 @@ pub struct Peripherals {
     pub AGC: AGC,
     #[doc = "SEC"]
     pub SEC: SEC,
+    #[doc = "PERMIT"]
+    pub PERMIT: PERMIT,
     #[doc = "UART0"]
     pub UART0: UART0,
     #[doc = "UART1"]
@@ -966,6 +996,9 @@ impl Peripherals {
                 _marker: PhantomData,
             },
             SEC: SEC {
+                _marker: PhantomData,
+            },
+            PERMIT: PERMIT {
                 _marker: PhantomData,
             },
             UART0: UART0 {

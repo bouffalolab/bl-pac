@@ -1033,7 +1033,26 @@ When sets and clears at the same, only set will take effect.</description>
         </register>
       </registers>
     </peripheral>
-    <!-- todo: TRUST_S = 0x20005000? -->
+    <peripheral>
+      <name>PERMIT</name>
+      <description>Peripheral and memory access permission</description>
+      <baseAddress>0x20005000</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x1000</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>todo</name>
+          <description>??</description>
+          <addressOffset>0</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
     <!-- todo: TRUST_NS = 0x20006000? -->
     <peripheral>
       <dim>2</dim>
