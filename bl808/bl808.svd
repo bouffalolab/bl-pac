@@ -4663,40 +4663,40 @@ DMA request will not be asserted if `transmit_available` is less than this value
           </fields>
         </register>
         <register>
-          <name>adc_config</name>
-          <description>Analog-to-digital convert configuration</description>
+          <name>gpadc_config</name>
+          <description>General Purpose Analog-to-digital convert configuration</description>
           <addressOffset>0x110</addressOffset>
           <fields>
             <!-- todo: fields -->
           </fields>
         </register>
         <register>
-          <name>dac_config_0</name>
-          <description>Digital-to-analog convert configuration 0</description>
+          <name>gpdac_config_0</name>
+          <description>General Purpose Digital-to-analog convert configuration 0</description>
           <addressOffset>0x120</addressOffset>
           <fields>
             <!-- todo: fields -->
           </fields>
         </register>
         <register>
-          <name>dac_config_1</name>
-          <description>Digital-to-analog convert configuration 1</description>
+          <name>gpdac_config_1</name>
+          <description>General Purpose Digital-to-analog convert configuration 1</description>
           <addressOffset>0x124</addressOffset>
           <fields>
             <!-- todo: fields -->
           </fields>
         </register>
         <register>
-          <name>dac_config_2</name>
-          <description>Digital-to-analog convert configuration 2</description>
+          <name>gpdac_config_2</name>
+          <description>General Purpose Digital-to-analog convert configuration 2</description>
           <addressOffset>0x128</addressOffset>
           <fields>
             <!-- todo: fields -->
           </fields>
         </register>
         <register>
-          <name>dac_config_3</name>
-          <description>Digital-to-analog convert configuration 3</description>
+          <name>gpdac_config_3</name>
+          <description>General Purpose Digital-to-analog convert configuration 3</description>
           <addressOffset>0x12C</addressOffset>
           <fields>
             <!-- todo: fields -->
@@ -4704,7 +4704,7 @@ DMA request will not be asserted if `transmit_available` is less than this value
         </register>
         <register>
           <name>dma_config_0</name>
-          <description>Direct memory access configuration 0</description>
+          <description>Direct Memory Access configuration 0</description>
           <addressOffset>0x130</addressOffset>
           <fields>
             <!-- todo: fields -->
@@ -4712,7 +4712,7 @@ DMA request will not be asserted if `transmit_available` is less than this value
         </register>
         <register>
           <name>dma_config_1</name>
-          <description>Direct memory access configuration 1</description>
+          <description>Direct Memory Access configuration 1</description>
           <addressOffset>0x134</addressOffset>
           <fields>
             <!-- todo: fields -->
@@ -4720,7 +4720,7 @@ DMA request will not be asserted if `transmit_available` is less than this value
         </register>
         <register>
           <name>dma_config_2</name>
-          <description>Direct memory access configuration 2</description>
+          <description>Direct Memory Access configuration 2</description>
           <addressOffset>0x138</addressOffset>
           <fields>
             <!-- todo: fields -->

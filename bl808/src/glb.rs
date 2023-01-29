@@ -39,22 +39,22 @@ pub struct RegisterBlock {
     #[doc = "0xf0 - Real-time clock configuration"]
     pub rtc_config: RTC_CONFIG,
     _reserved16: [u8; 0x1c],
-    #[doc = "0x110 - Analog-to-digital convert configuration"]
-    pub adc_config: ADC_CONFIG,
+    #[doc = "0x110 - General Purpose Analog-to-digital convert configuration"]
+    pub gpadc_config: GPADC_CONFIG,
     _reserved17: [u8; 0x0c],
-    #[doc = "0x120 - Digital-to-analog convert configuration 0"]
-    pub dac_config_0: DAC_CONFIG_0,
-    #[doc = "0x124 - Digital-to-analog convert configuration 1"]
-    pub dac_config_1: DAC_CONFIG_1,
-    #[doc = "0x128 - Digital-to-analog convert configuration 2"]
-    pub dac_config_2: DAC_CONFIG_2,
-    #[doc = "0x12c - Digital-to-analog convert configuration 3"]
-    pub dac_config_3: DAC_CONFIG_3,
-    #[doc = "0x130 - Direct memory access configuration 0"]
+    #[doc = "0x120 - General Purpose Digital-to-analog convert configuration 0"]
+    pub gpdac_config_0: GPDAC_CONFIG_0,
+    #[doc = "0x124 - General Purpose Digital-to-analog convert configuration 1"]
+    pub gpdac_config_1: GPDAC_CONFIG_1,
+    #[doc = "0x128 - General Purpose Digital-to-analog convert configuration 2"]
+    pub gpdac_config_2: GPDAC_CONFIG_2,
+    #[doc = "0x12c - General Purpose Digital-to-analog convert configuration 3"]
+    pub gpdac_config_3: GPDAC_CONFIG_3,
+    #[doc = "0x130 - Direct Memory Access configuration 0"]
     pub dma_config_0: DMA_CONFIG_0,
-    #[doc = "0x134 - Direct memory access configuration 1"]
+    #[doc = "0x134 - Direct Memory Access configuration 1"]
     pub dma_config_1: DMA_CONFIG_1,
-    #[doc = "0x138 - Direct memory access configuration 2"]
+    #[doc = "0x138 - Direct Memory Access configuration 2"]
     pub dma_config_2: DMA_CONFIG_2,
     _reserved24: [u8; 0x04],
     #[doc = "0x140 - Infrared configuration register 0"]
@@ -202,37 +202,37 @@ pub mod emi_config;
 pub type RTC_CONFIG = crate::Reg<rtc_config::RTC_CONFIG_SPEC>;
 #[doc = "Real-time clock configuration"]
 pub mod rtc_config;
-#[doc = "adc_config (rw) register accessor: an alias for `Reg<ADC_CONFIG_SPEC>`"]
-pub type ADC_CONFIG = crate::Reg<adc_config::ADC_CONFIG_SPEC>;
-#[doc = "Analog-to-digital convert configuration"]
-pub mod adc_config;
-#[doc = "dac_config_0 (rw) register accessor: an alias for `Reg<DAC_CONFIG_0_SPEC>`"]
-pub type DAC_CONFIG_0 = crate::Reg<dac_config_0::DAC_CONFIG_0_SPEC>;
-#[doc = "Digital-to-analog convert configuration 0"]
-pub mod dac_config_0;
-#[doc = "dac_config_1 (rw) register accessor: an alias for `Reg<DAC_CONFIG_1_SPEC>`"]
-pub type DAC_CONFIG_1 = crate::Reg<dac_config_1::DAC_CONFIG_1_SPEC>;
-#[doc = "Digital-to-analog convert configuration 1"]
-pub mod dac_config_1;
-#[doc = "dac_config_2 (rw) register accessor: an alias for `Reg<DAC_CONFIG_2_SPEC>`"]
-pub type DAC_CONFIG_2 = crate::Reg<dac_config_2::DAC_CONFIG_2_SPEC>;
-#[doc = "Digital-to-analog convert configuration 2"]
-pub mod dac_config_2;
-#[doc = "dac_config_3 (rw) register accessor: an alias for `Reg<DAC_CONFIG_3_SPEC>`"]
-pub type DAC_CONFIG_3 = crate::Reg<dac_config_3::DAC_CONFIG_3_SPEC>;
-#[doc = "Digital-to-analog convert configuration 3"]
-pub mod dac_config_3;
+#[doc = "gpadc_config (rw) register accessor: an alias for `Reg<GPADC_CONFIG_SPEC>`"]
+pub type GPADC_CONFIG = crate::Reg<gpadc_config::GPADC_CONFIG_SPEC>;
+#[doc = "General Purpose Analog-to-digital convert configuration"]
+pub mod gpadc_config;
+#[doc = "gpdac_config_0 (rw) register accessor: an alias for `Reg<GPDAC_CONFIG_0_SPEC>`"]
+pub type GPDAC_CONFIG_0 = crate::Reg<gpdac_config_0::GPDAC_CONFIG_0_SPEC>;
+#[doc = "General Purpose Digital-to-analog convert configuration 0"]
+pub mod gpdac_config_0;
+#[doc = "gpdac_config_1 (rw) register accessor: an alias for `Reg<GPDAC_CONFIG_1_SPEC>`"]
+pub type GPDAC_CONFIG_1 = crate::Reg<gpdac_config_1::GPDAC_CONFIG_1_SPEC>;
+#[doc = "General Purpose Digital-to-analog convert configuration 1"]
+pub mod gpdac_config_1;
+#[doc = "gpdac_config_2 (rw) register accessor: an alias for `Reg<GPDAC_CONFIG_2_SPEC>`"]
+pub type GPDAC_CONFIG_2 = crate::Reg<gpdac_config_2::GPDAC_CONFIG_2_SPEC>;
+#[doc = "General Purpose Digital-to-analog convert configuration 2"]
+pub mod gpdac_config_2;
+#[doc = "gpdac_config_3 (rw) register accessor: an alias for `Reg<GPDAC_CONFIG_3_SPEC>`"]
+pub type GPDAC_CONFIG_3 = crate::Reg<gpdac_config_3::GPDAC_CONFIG_3_SPEC>;
+#[doc = "General Purpose Digital-to-analog convert configuration 3"]
+pub mod gpdac_config_3;
 #[doc = "dma_config_0 (rw) register accessor: an alias for `Reg<DMA_CONFIG_0_SPEC>`"]
 pub type DMA_CONFIG_0 = crate::Reg<dma_config_0::DMA_CONFIG_0_SPEC>;
-#[doc = "Direct memory access configuration 0"]
+#[doc = "Direct Memory Access configuration 0"]
 pub mod dma_config_0;
 #[doc = "dma_config_1 (rw) register accessor: an alias for `Reg<DMA_CONFIG_1_SPEC>`"]
 pub type DMA_CONFIG_1 = crate::Reg<dma_config_1::DMA_CONFIG_1_SPEC>;
-#[doc = "Direct memory access configuration 1"]
+#[doc = "Direct Memory Access configuration 1"]
 pub mod dma_config_1;
 #[doc = "dma_config_2 (rw) register accessor: an alias for `Reg<DMA_CONFIG_2_SPEC>`"]
 pub type DMA_CONFIG_2 = crate::Reg<dma_config_2::DMA_CONFIG_2_SPEC>;
-#[doc = "Direct memory access configuration 2"]
+#[doc = "Direct Memory Access configuration 2"]
 pub mod dma_config_2;
 #[doc = "ir_config_0 (rw) register accessor: an alias for `Reg<IR_CONFIG_0_SPEC>`"]
 pub type IR_CONFIG_0 = crate::Reg<ir_config_0::IR_CONFIG_0_SPEC>;

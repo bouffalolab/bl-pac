@@ -36,6 +36,594 @@ See the Mulan PSL v2 for more details.
       </addressBlock>
       <registers>
         <register>
+          <name>chip_inform</name>
+          <description>Chip information register</description>
+          <addressOffset>0x000</addressOffset>
+          <fields>
+            <field>
+              <name>ready</name>
+              <description>Chip ready signal</description>
+              <lsb>27</lsb>
+              <msb>27</msb>
+            </field>
+            <field>
+              <name>version</name><!-- todo: verify -->
+              <description>Peripheral version</description>
+              <lsb>28</lsb>
+              <msb>31</msb>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <dim>2</dim>
+          <dimIncrement>0x04</dimIncrement>
+          <name>interrupt_state[%s]</name>
+          <description>Chip interrupt state register</description>
+          <addressOffset>0x050</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <dim>2</dim>
+          <dimIncrement>0x04</dimIncrement>
+          <name>interrupt_mask[%s]</name>
+          <description>Chip interrupt mask register</description>
+          <addressOffset>0x058</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <dim>2</dim>
+          <dimIncrement>0x04</dimIncrement>
+          <name>interrupt_clear[%s]</name>
+          <description>Chip clear interrupt register</description>
+          <addressOffset>0x060</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>clock_config_0</name>
+          <description>System clock configuration register 0</description>
+          <addressOffset>0x090</addressOffset>
+          <fields>
+            <field>
+              <name>pll</name>
+              <description>Enable or disable Phase-Locked Loop</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+            </field>
+            <field>
+              <name>fclk</name>
+              <description>Enable or disable fast clock</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+            </field>
+            <field>
+              <name>hclk</name>
+              <description>Enable or disable hibernate clock</description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+            </field>
+            <field>
+              <name>bclk</name>
+              <description>Enable or disable bus clock</description>
+              <lsb>3</lsb>
+              <msb>3</msb>
+            </field>
+            <field>
+              <name>root_clk_source</name>
+              <description>Set source of root clock</description>
+              <lsb>6</lsb>
+              <msb>7</msb>
+            </field>
+            <field>
+              <name>hclk_divide</name>
+              <description>Set divide factor of hibernate clock</description>
+              <lsb>8</lsb>
+              <msb>15</msb>
+            </field>
+            <field>
+              <name>bclk_divide</name>
+              <description>Set divide factor of bus clock</description>
+              <lsb>16</lsb>
+              <msb>23</msb>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>clock_config_1</name>
+          <description>System clock configuration register 1</description>
+          <addressOffset>0x094</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>bus_config_0</name>
+          <description>Bus configuration register 0</description>
+          <addressOffset>0x0A0</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>gpadc_config</name>
+          <description>General Purpose Analog-to-digital convert configuration</description>
+          <addressOffset>0x110</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>gpdac_config_0</name>
+          <description>General Purpose Digital-to-analog convert configuration 0</description>
+          <addressOffset>0x120</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>gpdac_config_1</name>
+          <description>General Purpose Digital-to-analog convert configuration 1</description>
+          <addressOffset>0x124</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>gpdac_config_2</name>
+          <description>General Purpose Digital-to-analog convert configuration 2</description>
+          <addressOffset>0x128</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>gpdac_config_3</name>
+          <description>General Purpose Digital-to-analog convert configuration 3</description>
+          <addressOffset>0x12C</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>dma_config_0</name>
+          <description>Direct Memory Access configuration 0</description>
+          <addressOffset>0x130</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>dma_config_1</name>
+          <description>Direct Memory Access configuration 1</description>
+          <addressOffset>0x134</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>dma_config_2</name>
+          <description>Direct Memory Access configuration 2</description>
+          <addressOffset>0x138</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>ir_config_0</name>
+          <description>Infrared configuration register 0</description>
+          <addressOffset>0x140</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>ir_config_1</name>
+          <description>Infrared configuration register 1</description>
+          <addressOffset>0x144</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>uart_config</name>
+          <description>Universal Asynchronous Receiver/Transmitter configuration</description>
+          <addressOffset>0x150</addressOffset>
+          <fields>
+            <field>
+              <name>clock_divide</name>
+              <description>Peripheral clock divide factor</description>
+              <lsb>0</lsb>
+              <msb>2</msb>
+            </field>
+            <field>
+              <name>clock_enable</name>
+              <description>Peripheral level clock gate enable</description>
+              <lsb>4</lsb>
+              <msb>4</msb>
+            </field>
+            <field>
+              <name>hibernate_clock_source</name>
+              <description>Reads clock source from hibernate registers</description>
+              <lsb>7</lsb>
+              <msb>7</msb>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>hibernate_clock_source_2</name>
+              <description>Reads clock source from hibernate registers</description>
+              <lsb>22</lsb>
+              <msb>22</msb>
+              <access>read-only</access>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>uart_signal_0</name>
+          <description>Universal Asynchronous Receiver/Transmitter signal configuration 0</description>
+          <addressOffset>0x154</addressOffset>
+          <writeConstraint>
+            <useEnumeratedValues>true</useEnumeratedValues>
+          </writeConstraint>
+          <fields>
+            <field>
+              <dim>8</dim>
+              <dimIncrement>4</dimIncrement>
+              <name>function_0[%s]</name>
+              <description>Select peripheral function for UART signal %s</description>
+              <lsb>0</lsb>
+              <msb>7</msb>
+              <enumeratedValues>
+                <name>Function</name>
+                <enumeratedValue>
+                  <name>uart0_rts</name>
+                  <description>UART0 Request-to-Send flow control</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>uart0_cts</name>
+                  <description>UART0 Clear-to-Send flow control</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>uart0_txd</name>
+                  <description>UART0 transmit data</description>
+                  <value>2</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>uart0_rxd</name>
+                  <description>UART0 receive data</description>
+                  <value>3</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>uart1_rts</name>
+                  <description>UART1 Request-to-Send flow control</description>
+                  <value>4</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>uart1_cts</name>
+                  <description>UART1 Clear-to-Send flow control</description>
+                  <value>5</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>uart1_txd</name>
+                  <description>UART1 transmit data</description>
+                  <value>6</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>uart1_rxd</name>
+                  <description>UART1 receive data</description>
+                  <value>7</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>uart_signal_1</name>
+          <description>Universal Asynchronous Receiver/Transmitter signal configuration 1</description>
+          <addressOffset>0x158</addressOffset>
+          <writeConstraint>
+            <useEnumeratedValues>true</useEnumeratedValues>
+          </writeConstraint>
+          <fields>
+            <field>
+              <dim>4</dim>
+              <dimIncrement>4</dimIncrement>
+              <name>function_1[%s]</name>
+              <description>Select peripheral function for UART signal %s (offset by 8)</description>
+              <lsb>0</lsb>
+              <msb>7</msb>
+              <enumeratedValues derivedFrom="uart_signal_0.function_0[%s].Function" />
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>flash_config</name>
+          <description>Serial flash configuration</description>
+          <addressOffset>0x170</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>i2c_config</name>
+          <description>Inter-Integrated Circuit bus configuration</description>
+          <addressOffset>0x180</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>i2s_config</name>
+          <description>Inter-IC Sound configuration</description>
+          <addressOffset>0x190</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>spi_config</name>
+          <description>Serial Peripheral Interface configuration</description>
+          <addressOffset>0x1B0</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>pwm_config</name>
+          <description>Pulse-Width configuration</description>
+          <addressOffset>0x1E0</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>dbi_config</name>
+          <description>MIPI Display Bus Interface clock configuration</description>
+          <addressOffset>0x1F0</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>digit_clock_0</name>
+          <description>Digital clock configuration 0</description>
+          <addressOffset>0x250</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>digit_clock_1</name>
+          <description>Digital clock configuration 1</description>
+          <addressOffset>0x254</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>digit_clock_2</name>
+          <description>Digital clock configuration 2</description>
+          <addressOffset>0x258</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>radio_config</name>
+          <description>Radio frequency configuration register</description>
+          <addressOffset>0x260</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>debug_config_0</name>
+          <description>Debug configuration register 0</description>
+          <addressOffset>0x2E0</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>debug_config_1</name>
+          <description>Debug configuration register 1</description>
+          <addressOffset>0x2E4</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>debug_config_2</name>
+          <description>Debug configuration register 2</description>
+          <addressOffset>0x2E8</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>debug_config_3</name>
+          <description>Debug configuration register 3</description>
+          <addressOffset>0x2EC</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>debug_config_4</name>
+          <description>Debug configuration register 4</description>
+          <addressOffset>0x2F0</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>self_test_0</name>
+          <description>Machine Built-in Self Test register 0</description>
+          <addressOffset>0x300</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>self_test_1</name>
+          <description>Machine Built-in Self Test register 1</description>
+          <addressOffset>0x304</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <!-- todo: what does bmx_cfg{0..=6} mean here? -->
+        <register>
+          <name>audio_config_0</name>
+          <description>Audio configuration register 0</description>
+          <addressOffset>0x340</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>audio_config_1</name>
+          <description>Audio configuration register 1</description>
+          <addressOffset>0x344</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>wifi_pll_config_0</name>
+          <description>Wireless Fidelity Phase-Locked Loop configuration 0</description>
+          <addressOffset>0x810</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>wifi_pll_config_1</name>
+          <description>Wireless Fidelity Phase-Locked Loop configuration 1</description>
+          <addressOffset>0x814</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>wifi_pll_config_2</name>
+          <description>Wireless Fidelity Phase-Locked Loop configuration 2</description>
+          <addressOffset>0x818</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>wifi_pll_config_3</name>
+          <description>Wireless Fidelity Phase-Locked Loop configuration 3</description>
+          <addressOffset>0x81C</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>wifi_pll_config_4</name>
+          <description>Wireless Fidelity Phase-Locked Loop configuration 4</description>
+          <addressOffset>0x820</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>wifi_pll_config_5</name>
+          <description>Wireless Fidelity Phase-Locked Loop configuration 5</description>
+          <addressOffset>0x824</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>wifi_pll_config_6</name>
+          <description>Wireless Fidelity Phase-Locked Loop configuration 6</description>
+          <addressOffset>0x828</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>wifi_pll_config_7</name>
+          <description>Wireless Fidelity Phase-Locked Loop configuration 7</description>
+          <addressOffset>0x82C</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>wifi_pll_config_8</name>
+          <description>Wireless Fidelity Phase-Locked Loop configuration 8</description>
+          <addressOffset>0x830</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>wifi_pll_config_9</name>
+          <description>Wireless Fidelity Phase-Locked Loop configuration 9</description>
+          <addressOffset>0x834</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>wifi_pll_config_10</name>
+          <description>Wireless Fidelity Phase-Locked Loop configuration 10</description>
+          <addressOffset>0x838</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>wifi_pll_config_11</name>
+          <description>Wireless Fidelity Phase-Locked Loop configuration 11</description>
+          <addressOffset>0x83C</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>wifi_pll_config_12</name>
+          <description>Wireless Fidelity Phase-Locked Loop configuration 12</description>
+          <addressOffset>0x840</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>wifi_pll_config_13</name>
+          <description>Wireless Fidelity Phase-Locked Loop configuration 13</description>
+          <addressOffset>0x844</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>wifi_pll_config_14</name>
+          <description>Wireless Fidelity Phase-Locked Loop configuration 14</description>
+          <addressOffset>0x848</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>ldo18</name>
+          <description>1.8-V Low Dropout Linear Regulator configuration</description>
+          <addressOffset>0x884</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
           <dim>35</dim>
           <dimIncrement>0x04</dimIncrement>
           <name>gpio_config[%s]</name>
