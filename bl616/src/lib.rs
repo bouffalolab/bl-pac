@@ -505,7 +505,7 @@ impl core::fmt::Debug for I2S {
 }
 #[doc = "Inter-IC Sound controller"]
 pub mod i2s;
-#[doc = "Audio analog-to-digital or pulse-density interface"]
+#[doc = "Analog-to-Digital or Pulse-Density audio input"]
 pub struct AUADC {
     _marker: PhantomData<*const ()>,
 }
@@ -531,7 +531,7 @@ impl core::fmt::Debug for AUADC {
         f.debug_struct("AUADC").finish()
     }
 }
-#[doc = "Audio analog-to-digital or pulse-density interface"]
+#[doc = "Analog-to-Digital or Pulse-Density audio input"]
 pub mod auadc;
 #[doc = "Quad Serial Flash control"]
 pub struct FLASH {
@@ -701,34 +701,34 @@ impl core::fmt::Debug for PSRAM {
 }
 #[doc = "Pseudo Static Random Access Memory control"]
 pub mod psram;
-#[doc = "Audio Pulse-Width Modulation controller"]
-pub struct APWM {
+#[doc = "Pulse-Width or Digital-to-Analog audio output"]
+pub struct AUDAC {
     _marker: PhantomData<*const ()>,
 }
-unsafe impl Send for APWM {}
-impl APWM {
+unsafe impl Send for AUDAC {}
+impl AUDAC {
     #[doc = r"Pointer to the register block"]
-    pub const PTR: *const apwm::RegisterBlock = 0x2005_5000 as *const _;
+    pub const PTR: *const audac::RegisterBlock = 0x2005_5000 as *const _;
     #[doc = r"Return the pointer to the register block"]
     #[inline(always)]
-    pub const fn ptr() -> *const apwm::RegisterBlock {
+    pub const fn ptr() -> *const audac::RegisterBlock {
         Self::PTR
     }
 }
-impl Deref for APWM {
-    type Target = apwm::RegisterBlock;
+impl Deref for AUDAC {
+    type Target = audac::RegisterBlock;
     #[inline(always)]
     fn deref(&self) -> &Self::Target {
         unsafe { &*Self::PTR }
     }
 }
-impl core::fmt::Debug for APWM {
+impl core::fmt::Debug for AUDAC {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("APWM").finish()
+        f.debug_struct("AUDAC").finish()
     }
 }
-#[doc = "Audio Pulse-Width Modulation controller"]
-pub mod apwm;
+#[doc = "Pulse-Width or Digital-to-Analog audio output"]
+pub mod audac;
 #[doc = "eFuse memory control"]
 pub struct EFUSE {
     _marker: PhantomData<*const ()>,
@@ -950,8 +950,8 @@ pub struct Peripherals {
     pub HBN: HBN,
     #[doc = "PSRAM"]
     pub PSRAM: PSRAM,
-    #[doc = "APWM"]
-    pub APWM: APWM,
+    #[doc = "AUDAC"]
+    pub AUDAC: AUDAC,
     #[doc = "EFUSE"]
     pub EFUSE: EFUSE,
     #[doc = "DVP0"]
@@ -1058,7 +1058,7 @@ impl Peripherals {
             PSRAM: PSRAM {
                 _marker: PhantomData,
             },
-            APWM: APWM {
+            AUDAC: AUDAC {
                 _marker: PhantomData,
             },
             EFUSE: EFUSE {

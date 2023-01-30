@@ -4241,7 +4241,7 @@ DMA request will not be asserted if `transmit_available` is less than this value
     </peripheral>
     <peripheral>
       <name>AUADC</name>
-      <description>Audio analog-to-digital or pulse-density interface</description>
+      <description>Analog-to-Digital or Pulse-Density audio input</description>
       <baseAddress>0x2000AC00</baseAddress>
       <addressBlock>
         <offset>0</offset>
@@ -4899,8 +4899,8 @@ DMA request will not be asserted if `transmit_available` is less than this value
       </registers>
     </peripheral>
     <peripheral>
-      <name>APWM</name>
-      <description>Audio Pulse-Width Modulation controller</description>
+      <name>AUDAC</name>
+      <description>Pulse-Width or Digital-to-Analog audio output</description>
       <baseAddress>0x20055000</baseAddress>
       <addressBlock>
         <offset>0</offset>
