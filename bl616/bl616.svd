@@ -4240,8 +4240,8 @@ DMA request will not be asserted if `transmit_available` is less than this value
       </registers>
     </peripheral>
     <peripheral>
-      <name>AADC</name>
-      <description>Audio Analog-to-Digital Converter</description>
+      <name>AUADC</name>
+      <description>Audio analog-to-digital or pulse-density interface</description>
       <baseAddress>0x2000AC00</baseAddress>
       <addressBlock>
         <offset>0</offset>
@@ -4250,9 +4250,113 @@ DMA request will not be asserted if `transmit_available` is less than this value
       </addressBlock>
       <registers>
         <register>
-          <name>todo</name>
-          <description>??</description>
-          <addressOffset>0</addressOffset>
+          <name>clock</name>
+          <description>Peripheral clock control register</description>
+          <addressOffset>0x00</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>interface_0</name>
+          <description>Interface control register 0</description>
+          <addressOffset>0x04</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>finite_impulse</name>
+          <description>Finite Impulse Response control</description>
+          <addressOffset>0x08</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>high_pass</name>
+          <description>High-Pass Filter control register</description>
+          <addressOffset>0x0C</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>interface_1</name>
+          <description>Interface control register 1</description>
+          <addressOffset>0x10</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>pulse_width</name>
+          <description>Pulse-Width Modulator control</description>
+          <addressOffset>0x1C</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>volume</name>
+          <description>Volume control register</description>
+          <addressOffset>0x38</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>analog_0</name>
+          <description>Analog signal configuration 0</description>
+          <addressOffset>0x60</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>analog_1</name>
+          <description>Analog signal configuration 1</description>
+          <addressOffset>0x64</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>command</name>
+          <description>Analog-to-Digital Converter commands</description>
+          <addressOffset>0x68</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>sample_data</name>
+          <description>Analog-to-Digital Converter sample output</description>
+          <addressOffset>0x6C</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>fifo_control</name>
+          <description>Controls Analog-to-Digital receive FIFO</description>
+          <addressOffset>0x80</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>fifo_state</name>
+          <description>Gets states of Analog-to-Digital receive FIFO</description>
+          <addressOffset>0x84</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>fifo_data</name>
+          <description>Sample output from Analog-to-Digital receive FIFO</description>
+          <addressOffset>0x88</addressOffset>
           <fields>
             <!-- todo: fields -->
           </fields>

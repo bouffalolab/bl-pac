@@ -505,34 +505,34 @@ impl core::fmt::Debug for I2S {
 }
 #[doc = "Inter-IC Sound controller"]
 pub mod i2s;
-#[doc = "Audio Analog-to-Digital Converter"]
-pub struct AADC {
+#[doc = "Audio analog-to-digital or pulse-density interface"]
+pub struct AUADC {
     _marker: PhantomData<*const ()>,
 }
-unsafe impl Send for AADC {}
-impl AADC {
+unsafe impl Send for AUADC {}
+impl AUADC {
     #[doc = r"Pointer to the register block"]
-    pub const PTR: *const aadc::RegisterBlock = 0x2000_ac00 as *const _;
+    pub const PTR: *const auadc::RegisterBlock = 0x2000_ac00 as *const _;
     #[doc = r"Return the pointer to the register block"]
     #[inline(always)]
-    pub const fn ptr() -> *const aadc::RegisterBlock {
+    pub const fn ptr() -> *const auadc::RegisterBlock {
         Self::PTR
     }
 }
-impl Deref for AADC {
-    type Target = aadc::RegisterBlock;
+impl Deref for AUADC {
+    type Target = auadc::RegisterBlock;
     #[inline(always)]
     fn deref(&self) -> &Self::Target {
         unsafe { &*Self::PTR }
     }
 }
-impl core::fmt::Debug for AADC {
+impl core::fmt::Debug for AUADC {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("AADC").finish()
+        f.debug_struct("AUADC").finish()
     }
 }
-#[doc = "Audio Analog-to-Digital Converter"]
-pub mod aadc;
+#[doc = "Audio analog-to-digital or pulse-density interface"]
+pub mod auadc;
 #[doc = "Quad Serial Flash control"]
 pub struct FLASH {
     _marker: PhantomData<*const ()>,
@@ -936,8 +936,8 @@ pub struct Peripherals {
     pub ISO11898: ISO11898,
     #[doc = "I2S"]
     pub I2S: I2S,
-    #[doc = "AADC"]
-    pub AADC: AADC,
+    #[doc = "AUADC"]
+    pub AUADC: AUADC,
     #[doc = "FLASH"]
     pub FLASH: FLASH,
     #[doc = "DMA"]
@@ -1037,7 +1037,7 @@ impl Peripherals {
             I2S: I2S {
                 _marker: PhantomData,
             },
-            AADC: AADC {
+            AUADC: AUADC {
                 _marker: PhantomData,
             },
             FLASH: FLASH {
