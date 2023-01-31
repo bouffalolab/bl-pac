@@ -4339,7 +4339,7 @@ DMA request will not be asserted if `transmit_available` is less than this value
         </register>
         <register>
           <name>fifo_control</name>
-          <description>Controls Analog-to-Digital receive FIFO</description>
+          <description>Controls audio input FIFO</description>
           <addressOffset>0x80</addressOffset>
           <fields>
             <!-- todo: fields -->
@@ -4347,7 +4347,7 @@ DMA request will not be asserted if `transmit_available` is less than this value
         </register>
         <register>
           <name>fifo_state</name>
-          <description>Gets states of Analog-to-Digital receive FIFO</description>
+          <description>Gets states of audio input FIFO</description>
           <addressOffset>0x84</addressOffset>
           <fields>
             <!-- todo: fields -->
@@ -4355,7 +4355,7 @@ DMA request will not be asserted if `transmit_available` is less than this value
         </register>
         <register>
           <name>fifo_data</name>
-          <description>Sample output from Analog-to-Digital receive FIFO</description>
+          <description>Reads data from audio input FIFO</description>
           <addressOffset>0x88</addressOffset>
           <fields>
             <!-- todo: fields -->
@@ -4909,9 +4909,73 @@ DMA request will not be asserted if `transmit_available` is less than this value
       </addressBlock>
       <registers>
         <register>
-          <name>todo</name>
-          <description>??</description>
-          <addressOffset>0</addressOffset>
+          <name>clock</name>
+          <description>Clock control register</description>
+          <addressOffset>0x00</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>state</name>
+          <description>Peripheral state register</description>
+          <addressOffset>0x04</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>volume_0</name>
+          <description>Volume control register 0</description>
+          <addressOffset>0x08</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>volume_1</name>
+          <description>Volume control register 1</description>
+          <addressOffset>0x0C</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>zero_signal</name>
+          <description>Zero signal detection</description>
+          <addressOffset>0x10</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>config</name>
+          <description>Delta-Sigma and mixer control</description>
+          <addressOffset>0x14</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>fifo_control</name>
+          <description>Controls audio output FIFO</description>
+          <addressOffset>0x8C</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>fifo_state</name>
+          <description>Gets states of audio output FIFO</description>
+          <addressOffset>0x90</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>fifo_data</name>
+          <description>Writes data into audio output FIFO</description>
+          <addressOffset>0x94</addressOffset>
           <fields>
             <!-- todo: fields -->
           </fields>

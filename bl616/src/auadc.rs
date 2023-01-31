@@ -27,11 +27,11 @@ pub struct RegisterBlock {
     #[doc = "0x6c - Analog-to-Digital Converter sample output"]
     pub sample_data: SAMPLE_DATA,
     _reserved11: [u8; 0x10],
-    #[doc = "0x80 - Controls Analog-to-Digital receive FIFO"]
+    #[doc = "0x80 - Controls audio input FIFO"]
     pub fifo_control: FIFO_CONTROL,
-    #[doc = "0x84 - Gets states of Analog-to-Digital receive FIFO"]
+    #[doc = "0x84 - Gets states of audio input FIFO"]
     pub fifo_state: FIFO_STATE,
-    #[doc = "0x88 - Sample output from Analog-to-Digital receive FIFO"]
+    #[doc = "0x88 - Reads data from audio input FIFO"]
     pub fifo_data: FIFO_DATA,
 }
 #[doc = "clock (rw) register accessor: an alias for `Reg<CLOCK_SPEC>`"]
@@ -80,13 +80,13 @@ pub type SAMPLE_DATA = crate::Reg<sample_data::SAMPLE_DATA_SPEC>;
 pub mod sample_data;
 #[doc = "fifo_control (rw) register accessor: an alias for `Reg<FIFO_CONTROL_SPEC>`"]
 pub type FIFO_CONTROL = crate::Reg<fifo_control::FIFO_CONTROL_SPEC>;
-#[doc = "Controls Analog-to-Digital receive FIFO"]
+#[doc = "Controls audio input FIFO"]
 pub mod fifo_control;
 #[doc = "fifo_state (rw) register accessor: an alias for `Reg<FIFO_STATE_SPEC>`"]
 pub type FIFO_STATE = crate::Reg<fifo_state::FIFO_STATE_SPEC>;
-#[doc = "Gets states of Analog-to-Digital receive FIFO"]
+#[doc = "Gets states of audio input FIFO"]
 pub mod fifo_state;
 #[doc = "fifo_data (rw) register accessor: an alias for `Reg<FIFO_DATA_SPEC>`"]
 pub type FIFO_DATA = crate::Reg<fifo_data::FIFO_DATA_SPEC>;
-#[doc = "Sample output from Analog-to-Digital receive FIFO"]
+#[doc = "Reads data from audio input FIFO"]
 pub mod fifo_data;

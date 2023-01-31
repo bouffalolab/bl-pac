@@ -42,7 +42,7 @@ impl W {
         self
     }
 }
-#[doc = "Gets states of audio input FIFO\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [fifo_state](index.html) module"]
+#[doc = "Gets states of audio output FIFO\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [fifo_state](index.html) module"]
 pub struct FIFO_STATE_SPEC;
 impl crate::RegisterSpec for FIFO_STATE_SPEC {
     type Ux = u32;
