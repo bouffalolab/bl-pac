@@ -1085,7 +1085,7 @@ When sets and clears at the same, only set will take effect.</description>
     <!-- todo: MIX: 0x20001000? -->
     <peripheral>
       <name>GPIP</name>
-      <description>Generic DAC, ADC and ACOMP interface control</description>
+      <description>Generic DAC and ADC interface control</description>
       <baseAddress>0x20002000</baseAddress>
       <addressBlock>
         <offset>0</offset>
@@ -1094,9 +1094,49 @@ When sets and clears at the same, only set will take effect.</description>
       </addressBlock>
       <registers>
         <register>
-          <name>todo</name>
-          <description>??</description>
-          <addressOffset>0</addressOffset>
+          <name>gpadc_config</name>
+          <description>Generic Analog-to-Digital Converter register</description>
+          <addressOffset>0x00</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>gpadc_dma_read</name>
+          <description>DMA data output of Generic Analog-to-Digital Converter</description>
+          <addressOffset>0x04</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>gpdac_config</name>
+          <description>Generic Digital-to-Analog Converter register</description>
+          <addressOffset>0x40</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>gpdac_dma_config</name>
+          <description>Digital-to-Analog Converter DMA configuration</description>
+          <addressOffset>0x44</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>gpdac_dma_write</name>
+          <description>DMA data input of Generic Digital-to-Analog Converter</description>
+          <addressOffset>0x48</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>gpdac_fifo_state</name>
+          <description>Transmit FIFO state of Generic Digital-to-Analog Converter</description>
+          <addressOffset>0x4C</addressOffset>
           <fields>
             <!-- todo: fields -->
           </fields>

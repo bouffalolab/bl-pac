@@ -61,7 +61,7 @@ impl core::fmt::Debug for GLB {
 }
 #[doc = "Global configuration register"]
 pub mod glb;
-#[doc = "Generic DAC, ADC and ACOMP interface control"]
+#[doc = "Generic DAC and ADC interface control"]
 pub struct GPIP {
     _marker: PhantomData<*const ()>,
 }
@@ -87,7 +87,7 @@ impl core::fmt::Debug for GPIP {
         f.debug_struct("GPIP").finish()
     }
 }
-#[doc = "Generic DAC, ADC and ACOMP interface control"]
+#[doc = "Generic DAC and ADC interface control"]
 pub mod gpip;
 #[doc = "Automatic Gain Control"]
 pub struct AGC {
