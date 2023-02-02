@@ -347,7 +347,30 @@ See the Mulan PSL v2 for more details.
           <description>Serial flash configuration</description>
           <addressOffset>0x170</addressOffset>
           <fields>
-            <!-- todo: fields -->
+            <field>
+              <name>clock_divide</name>
+              <description>Peripheral clock divide factor</description>
+              <lsb>8</lsb>
+              <msb>10</msb>
+            </field>
+            <field>
+              <name>clock_enable</name>
+              <description>Peripheral level clock gate enable</description>
+              <lsb>11</lsb>
+              <msb>11</msb>
+            </field>
+            <field>
+              <name>clock_source_0</name>
+              <description>Peripheral clock source register 0</description>
+              <lsb>12</lsb>
+              <msb>13</msb>
+            </field>
+            <field>
+              <name>clock_source_1</name>
+              <description>Peripheral clock source register 1</description>
+              <lsb>14</lsb>
+              <msb>15</msb>
+            </field>
           </fields>
         </register>
         <register>
@@ -355,7 +378,24 @@ See the Mulan PSL v2 for more details.
           <description>Inter-Integrated Circuit bus configuration</description>
           <addressOffset>0x180</addressOffset>
           <fields>
-            <!-- todo: fields -->
+            <field>
+              <name>clock_divide</name>
+              <description>Peripheral clock divide factor</description>
+              <lsb>16</lsb>
+              <msb>23</msb>
+            </field>
+            <field>
+              <name>clock_enable</name>
+              <description>Peripheral level clock gate enable</description>
+              <lsb>24</lsb>
+              <msb>24</msb>
+            </field>
+            <field>
+              <name>clock_source</name>
+              <description>Peripheral clock source register</description>
+              <lsb>25</lsb>
+              <msb>25</msb>
+            </field>
           </fields>
         </register>
         <register>
@@ -371,7 +411,30 @@ See the Mulan PSL v2 for more details.
           <description>Serial Peripheral Interface configuration</description>
           <addressOffset>0x1B0</addressOffset>
           <fields>
-            <!-- todo: fields -->
+            <field>
+              <name>clock_divide</name>
+              <description>Peripheral clock divide factor</description>
+              <lsb>0</lsb>
+              <msb>4</msb>
+            </field>
+            <field>
+              <name>clock_enable</name>
+              <description>Peripheral level clock gate enable</description>
+              <lsb>8</lsb>
+              <msb>8</msb>
+            </field>
+            <field>
+              <name>clock_source</name>
+              <description>Peripheral clock source register</description>
+              <lsb>9</lsb>
+              <msb>9</msb>
+            </field>
+            <field>
+              <name>pin_swap</name>
+              <description>Swap Serial Peripheral Interface pin signals</description>
+              <lsb>16</lsb>
+              <msb>19</msb>
+            </field>
           </fields>
         </register>
         <register>
@@ -387,7 +450,24 @@ See the Mulan PSL v2 for more details.
           <description>MIPI Display Bus Interface clock configuration</description>
           <addressOffset>0x1F0</addressOffset>
           <fields>
-            <!-- todo: fields -->
+            <field>
+              <name>clock_divide</name>
+              <description>Peripheral clock divide factor</description>
+              <lsb>0</lsb>
+              <msb>4</msb>
+            </field>
+            <field>
+              <name>clock_enable</name>
+              <description>Peripheral level clock gate enable</description>
+              <lsb>8</lsb>
+              <msb>8</msb>
+            </field>
+            <field>
+              <name>clock_source</name>
+              <description>Peripheral clock source register</description>
+              <lsb>9</lsb>
+              <msb>9</msb>
+            </field>
           </fields>
         </register>
         <register>
@@ -491,6 +571,38 @@ See the Mulan PSL v2 for more details.
           <name>audio_config_1</name>
           <description>Audio configuration register 1</description>
           <addressOffset>0x344</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>emac_config</name>
+          <description>Ethernet Media Access Control configuration</description>
+          <addressOffset>0x390</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>sdh_config</name>
+          <description>Secure Digital host configuration</description>
+          <addressOffset>0x430</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>permit_config</name>
+          <description>Permission control peripheral configuration</description>
+          <addressOffset>0x490</addressOffset>
+          <fields>
+            <!-- todo: fields -->
+          </fields>
+        </register>
+        <register>
+          <name>psram_config</name>
+          <description>Pseudo Static Random-Access Memory configuration</description>
+          <addressOffset>0x620</addressOffset>
           <fields>
             <!-- todo: fields -->
           </fields>

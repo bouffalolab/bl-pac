@@ -34,7 +34,72 @@ impl From<crate::W<FLASH_CONFIG_SPEC>> for W {
         W(writer)
     }
 }
+#[doc = "Field `clock_divide` reader - Peripheral clock divide factor"]
+pub type CLOCK_DIVIDE_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `clock_divide` writer - Peripheral clock divide factor"]
+pub type CLOCK_DIVIDE_W<'a, const O: u8> =
+    crate::FieldWriter<'a, u32, FLASH_CONFIG_SPEC, u8, u8, 3, O>;
+#[doc = "Field `clock_enable` reader - Peripheral level clock gate enable"]
+pub type CLOCK_ENABLE_R = crate::BitReader<bool>;
+#[doc = "Field `clock_enable` writer - Peripheral level clock gate enable"]
+pub type CLOCK_ENABLE_W<'a, const O: u8> = crate::BitWriter<'a, u32, FLASH_CONFIG_SPEC, bool, O>;
+#[doc = "Field `clock_source_0` reader - Peripheral clock source register 0"]
+pub type CLOCK_SOURCE_0_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `clock_source_0` writer - Peripheral clock source register 0"]
+pub type CLOCK_SOURCE_0_W<'a, const O: u8> =
+    crate::FieldWriter<'a, u32, FLASH_CONFIG_SPEC, u8, u8, 2, O>;
+#[doc = "Field `clock_source_1` reader - Peripheral clock source register 1"]
+pub type CLOCK_SOURCE_1_R = crate::FieldReader<u8, u8>;
+#[doc = "Field `clock_source_1` writer - Peripheral clock source register 1"]
+pub type CLOCK_SOURCE_1_W<'a, const O: u8> =
+    crate::FieldWriter<'a, u32, FLASH_CONFIG_SPEC, u8, u8, 2, O>;
+impl R {
+    #[doc = "Bits 8:10 - Peripheral clock divide factor"]
+    #[inline(always)]
+    pub fn clock_divide(&self) -> CLOCK_DIVIDE_R {
+        CLOCK_DIVIDE_R::new(((self.bits >> 8) & 7) as u8)
+    }
+    #[doc = "Bit 11 - Peripheral level clock gate enable"]
+    #[inline(always)]
+    pub fn clock_enable(&self) -> CLOCK_ENABLE_R {
+        CLOCK_ENABLE_R::new(((self.bits >> 11) & 1) != 0)
+    }
+    #[doc = "Bits 12:13 - Peripheral clock source register 0"]
+    #[inline(always)]
+    pub fn clock_source_0(&self) -> CLOCK_SOURCE_0_R {
+        CLOCK_SOURCE_0_R::new(((self.bits >> 12) & 3) as u8)
+    }
+    #[doc = "Bits 14:15 - Peripheral clock source register 1"]
+    #[inline(always)]
+    pub fn clock_source_1(&self) -> CLOCK_SOURCE_1_R {
+        CLOCK_SOURCE_1_R::new(((self.bits >> 14) & 3) as u8)
+    }
+}
 impl W {
+    #[doc = "Bits 8:10 - Peripheral clock divide factor"]
+    #[inline(always)]
+    #[must_use]
+    pub fn clock_divide(&mut self) -> CLOCK_DIVIDE_W<8> {
+        CLOCK_DIVIDE_W::new(self)
+    }
+    #[doc = "Bit 11 - Peripheral level clock gate enable"]
+    #[inline(always)]
+    #[must_use]
+    pub fn clock_enable(&mut self) -> CLOCK_ENABLE_W<11> {
+        CLOCK_ENABLE_W::new(self)
+    }
+    #[doc = "Bits 12:13 - Peripheral clock source register 0"]
+    #[inline(always)]
+    #[must_use]
+    pub fn clock_source_0(&mut self) -> CLOCK_SOURCE_0_W<12> {
+        CLOCK_SOURCE_0_W::new(self)
+    }
+    #[doc = "Bits 14:15 - Peripheral clock source register 1"]
+    #[inline(always)]
+    #[must_use]
+    pub fn clock_source_1(&mut self) -> CLOCK_SOURCE_1_W<14> {
+        CLOCK_SOURCE_1_W::new(self)
+    }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
     pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {

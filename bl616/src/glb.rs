@@ -97,7 +97,19 @@ pub struct RegisterBlock {
     pub audio_config_0: AUDIO_CONFIG_0,
     #[doc = "0x344 - Audio configuration register 1"]
     pub audio_config_1: AUDIO_CONFIG_1,
-    _reserved39: [u8; 0x04c8],
+    _reserved39: [u8; 0x48],
+    #[doc = "0x390 - Ethernet Media Access Control configuration"]
+    pub emac_config: EMAC_CONFIG,
+    _reserved40: [u8; 0x9c],
+    #[doc = "0x430 - Secure Digital host configuration"]
+    pub sdh_config: SDH_CONFIG,
+    _reserved41: [u8; 0x5c],
+    #[doc = "0x490 - Permission control peripheral configuration"]
+    pub permit_config: PERMIT_CONFIG,
+    _reserved42: [u8; 0x018c],
+    #[doc = "0x620 - Pseudo Static Random-Access Memory configuration"]
+    pub psram_config: PSRAM_CONFIG,
+    _reserved43: [u8; 0x01ec],
     #[doc = "0x810 - Wireless Fidelity Phase-Locked Loop configuration 0"]
     pub wifi_pll_config_0: WIFI_PLL_CONFIG_0,
     #[doc = "0x814 - Wireless Fidelity Phase-Locked Loop configuration 1"]
@@ -128,16 +140,16 @@ pub struct RegisterBlock {
     pub wifi_pll_config_13: WIFI_PLL_CONFIG_13,
     #[doc = "0x848 - Wireless Fidelity Phase-Locked Loop configuration 14"]
     pub wifi_pll_config_14: WIFI_PLL_CONFIG_14,
-    _reserved54: [u8; 0x38],
+    _reserved58: [u8; 0x38],
     #[doc = "0x884 - 1.8-V Low Dropout Linear Regulator configuration"]
     pub ldo18: LDO18,
-    _reserved55: [u8; 0x3c],
+    _reserved59: [u8; 0x3c],
     #[doc = "0x8c4..0x950 - Generic Purpose Input/Output config"]
     pub gpio_config: [GPIO_CONFIG; 35],
-    _reserved56: [u8; 0x0174],
+    _reserved60: [u8; 0x0174],
     #[doc = "0xac4..0xacc - Read value from Generic Purpose Input/Output pins"]
     pub gpio_input: [GPIO_INPUT; 2],
-    _reserved57: [u8; 0x18],
+    _reserved61: [u8; 0x18],
     #[doc = "0xae4..0xaec - Write value to Generic Purpose Input/Output pins"]
     pub gpio_output: [GPIO_OUTPUT; 2],
     #[doc = "0xaec..0xaf4 - Set pin output value to high"]
@@ -301,6 +313,22 @@ pub mod audio_config_0;
 pub type AUDIO_CONFIG_1 = crate::Reg<audio_config_1::AUDIO_CONFIG_1_SPEC>;
 #[doc = "Audio configuration register 1"]
 pub mod audio_config_1;
+#[doc = "emac_config (rw) register accessor: an alias for `Reg<EMAC_CONFIG_SPEC>`"]
+pub type EMAC_CONFIG = crate::Reg<emac_config::EMAC_CONFIG_SPEC>;
+#[doc = "Ethernet Media Access Control configuration"]
+pub mod emac_config;
+#[doc = "sdh_config (rw) register accessor: an alias for `Reg<SDH_CONFIG_SPEC>`"]
+pub type SDH_CONFIG = crate::Reg<sdh_config::SDH_CONFIG_SPEC>;
+#[doc = "Secure Digital host configuration"]
+pub mod sdh_config;
+#[doc = "permit_config (rw) register accessor: an alias for `Reg<PERMIT_CONFIG_SPEC>`"]
+pub type PERMIT_CONFIG = crate::Reg<permit_config::PERMIT_CONFIG_SPEC>;
+#[doc = "Permission control peripheral configuration"]
+pub mod permit_config;
+#[doc = "psram_config (rw) register accessor: an alias for `Reg<PSRAM_CONFIG_SPEC>`"]
+pub type PSRAM_CONFIG = crate::Reg<psram_config::PSRAM_CONFIG_SPEC>;
+#[doc = "Pseudo Static Random-Access Memory configuration"]
+pub mod psram_config;
 #[doc = "wifi_pll_config_0 (rw) register accessor: an alias for `Reg<WIFI_PLL_CONFIG_0_SPEC>`"]
 pub type WIFI_PLL_CONFIG_0 = crate::Reg<wifi_pll_config_0::WIFI_PLL_CONFIG_0_SPEC>;
 #[doc = "Wireless Fidelity Phase-Locked Loop configuration 0"]
