@@ -8,17 +8,19 @@ use clap::{builder::PossibleValue, Parser, ValueEnum};
 
 #[derive(Clone, Copy, Debug, Parser)]
 enum Chip {
+    BL602,
     BL616,
     BL808,
 }
 
 impl ValueEnum for Chip {
     fn value_variants<'a>() -> &'a [Self] {
-        &[Chip::BL616, Chip::BL808]
+        &[Chip::BL602, Chip::BL616, Chip::BL808]
     }
 
     fn to_possible_value(&self) -> Option<PossibleValue> {
         let (name, help) = match self {
+            Chip::BL602 => ("bl602", "bouffalo bl602"),
             Chip::BL616 => ("bl616", "bouffalo bl616"),
             Chip::BL808 => ("bl808", "bouffalo bl808"),
         };
@@ -29,6 +31,7 @@ impl ValueEnum for Chip {
 impl ToString for Chip {
     fn to_string(&self) -> String {
         match self {
+            Chip::BL602 => "bl602",
             Chip::BL616 => "bl616",
             Chip::BL808 => "bl808",
         }
