@@ -1,5 +1,6 @@
 [![crates.io](https://img.shields.io/crates/d/bl602-pac.svg)](https://crates.io/crates/bl602-pac)
-[![Build Status](https://travis-ci.org/riscv-rust/bl602-pac.svg?branch=master)](https://travis-ci.org/riscv-rust/bl602-pac)
+[![Documentation](https://docs.rs/bl602-pac/badge.svg)](https://docs.rs/bl602-pac)
+![License](https://img.shields.io/crates/l/bl602-pac.svg)
 
 # bl602-pac
 
