@@ -1,6 +1,5 @@
 [workspace]
 members = [
-    "bl602",
     "bl616",
     "bl808",
     "xtask"

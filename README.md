@@ -6,9 +6,10 @@ Embedded Rust Peripheral Access Crate for Bouffalo chips
 
 | Series | Path | Documents |
 |:-------|:-----|:----------|
-| BL602 | [link](./bl602/) | [![Documentation](https://docs.rs/bl602-pac/badge.svg)](https://docs.rs/bl602-pac)|
 | BL616/BL618 | [link](./bl616/) | [![Documentation](https://docs.rs/bl616-pac/badge.svg)](https://docs.rs/bl616-pac)|
 | BL808 | [link](./bl808/) | [![Documentation](https://docs.rs/bl808-pac/badge.svg)](https://docs.rs/bl808-pac) |
+
+For BL602 support: please refer to [sipeed/bl602-pac](https://github.com/sipeed/bl602-pac)
 
 ## Contributing
 
